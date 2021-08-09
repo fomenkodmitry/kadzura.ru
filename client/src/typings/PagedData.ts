@@ -1,4 +1,4 @@
 ﻿export interface PagedData<Data> {
-    Data: Data;
+    Data: Data[];
     TotalCount: number;
 }
