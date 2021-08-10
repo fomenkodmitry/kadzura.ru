@@ -1,5 +1,5 @@
 ﻿import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {InterviewQuestion, InterviewQuestionPaged} from "../../typings/InterviewQuestion";
+import {InterviewQuestion, InterviewQuestionPaged} from "../../models/InterviewQuestion";
 
 
 const initialState: InterviewQuestionPaged = {

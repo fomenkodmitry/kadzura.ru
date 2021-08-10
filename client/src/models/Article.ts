@@ -1,12 +1,14 @@
 ﻿import {Category} from "./Category";
 import {PagedData} from "./PagedData";
 
-export interface InterviewQuestion {
+type Article = {
     Id: string;
     DateCreated: string;
-    Question: string;
-    Answer: string;
+    Tittle: string;
+    Text: string;
     Categories: Category[];
-}
+};
 
-export type InterviewQuestionPaged = PagedData<InterviewQuestion>;
+type ArticlePaged = PagedData<Article>;
+
+export type { Article, ArticlePaged };

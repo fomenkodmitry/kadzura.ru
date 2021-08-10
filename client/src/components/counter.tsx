@@ -1,9 +1,9 @@
-﻿import React, {useEffect} from "react";
+﻿import React, {FC, useEffect} from "react";
 import {useDispatch} from "react-redux";
 import {useNamedSelector} from "../hooks/useNamedSelector";
 import {addCount, setCount} from "../features/counter/counterSlice";
 
-export const Counter: React.FC = () => {
+export const Counter: FC = () => {
     const dispatch = useDispatch();
 
     const getCounter = () => {
