@@ -2,13 +2,32 @@ import React from 'react';
 import './App.css';
 import {Provider} from "react-redux";
 import {store} from "./common/Store";
-import {PageMain} from "./pages/PageMain";
+import {Switch, Route, BrowserRouter} from 'react-router-dom';
+import {ROUTES} from "./routes";
+import Layout from "./components/Layout";
 
 function App() {
     return (
-        <Provider store={store}>
-            <PageMain/>
-        </Provider>
+        <Switch>
+            {/*<Suspense fallback={}> расскоментить если захочу грузить асинхронно*/}
+            {ROUTES.map(({ component: Component, path, id, withLayout }) => {
+                return withLayout ? (
+                    <Route
+                        key={id}
+                        path={path}
+                        exact
+                        render={() => (
+                            <Layout>
+                                <Component />
+                            </Layout>
+                        )}
+                    />
+                ) : (
+                    <Route key={id} path={path} exact component={Component} />
+                );
+            })}
+            {/*</Suspense>*/}
+        </Switch>
     );
 }
 
