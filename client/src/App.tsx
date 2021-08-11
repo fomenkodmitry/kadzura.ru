@@ -1,16 +1,14 @@
 import React from 'react';
 import './App.css';
-import {Provider} from "react-redux";
-import {store} from "./common/Store";
-import {Switch, Route, BrowserRouter} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 import {ROUTES} from "./routes";
-import Layout from "./components/Layout";
+import Layout from "./containers/Layout";
 
 function App() {
     return (
         <Switch>
             {/*<Suspense fallback={}> расскоментить если захочу грузить асинхронно*/}
-            {ROUTES.map(({ component: Component, path, id, withLayout }) => {
+            {ROUTES.map(({ page: Component, path, id, withLayout }) => {
                 return withLayout ? (
                     <Route
                         key={id}

@@ -1,6 +1,6 @@
 ﻿export type Route = {
     id: number;
     path: string;
-    component: React.FC;
+    page: React.FC;
     withLayout: boolean;
 };

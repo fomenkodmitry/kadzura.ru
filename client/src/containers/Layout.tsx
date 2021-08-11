@@ -5,13 +5,13 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import {makeStyles, Theme, createStyles} from '@material-ui/core/styles';
-import {Navbar} from "../containers/Navbar";
 import {useDispatch} from "react-redux";
 import {changeMobileIsOpen} from "../features/mobile/mobileIsOpenSlice";
 import {navigationLayout} from "../dataset/navigationLayout";
 import {Button} from "@material-ui/core";
 import {useHistory} from "react-router-dom";
 import {useNamedSelector} from "../hooks/useNamedSelector";
+import {Navbar} from "./Navbar";
 
 const drawerWidth = 240;
 
@@ -79,8 +79,6 @@ const Layout: FC = ({children}) => {
     const toLink = (link: string) => {
         history.push(link);
     };
-
-    const {isOpen} = useNamedSelector('mobileIsOpen')
 
     return (
         <div className={classes.root}>
