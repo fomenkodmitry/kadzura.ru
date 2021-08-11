@@ -1,6 +1,7 @@
 ﻿import React, {FC} from "react";
 import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+import PostGrid from "../components/PostGrid";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -14,9 +15,7 @@ export const Main: FC = () => {
     return (
         <div>
             <div className={classes.toolbar}/>
-            <Typography paragraph>аавфыафывавыа
-                жопавываыафвыафывафывафывафвыа
-            </Typography>
+            <PostGrid/>
         </div>
     )
 }

@@ -7,10 +7,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import {makeStyles, Theme, createStyles} from '@material-ui/core/styles';
 import {useDispatch} from "react-redux";
 import {changeMobileIsOpen} from "../features/mobile/mobileIsOpenSlice";
-import {navigationLayout} from "../dataset/navigationLayout";
-import {Button} from "@material-ui/core";
-import {useHistory} from "react-router-dom";
-import {useNamedSelector} from "../hooks/useNamedSelector";
 import {Navbar} from "./Navbar";
 
 const drawerWidth = 240;
@@ -42,27 +38,8 @@ const useStyles = makeStyles((theme: Theme) =>
         toolbar: theme.mixins.toolbar,
         content: {
             flexGrow: 1,
-            padding: theme.spacing(3),
+            padding: theme.spacing(0),
         },
-        navigation: {
-            justifyContent: 'center',
-            flexGrow: 1,
-            display: 'flex',
-            columnGap: '20px'
-        },
-        link: {
-            color: '#ffffff'
-        },
-        fulltext: {
-            [theme.breakpoints.down('md')]: {
-                display: 'none',
-            },
-        },
-        smalltext: {
-            [theme.breakpoints.up('sm')]: {
-                display: 'none',
-            },
-        }
     }),
 );
 
@@ -73,11 +50,6 @@ const Layout: FC = ({children}) => {
 
     const changeMobileOpen = () => {
         dispatch(changeMobileIsOpen())
-    };
-
-    const history = useHistory();
-    const toLink = (link: string) => {
-        history.push(link);
     };
 
     return (
@@ -94,15 +66,8 @@ const Layout: FC = ({children}) => {
                     >
                         <MenuIcon/>
                     </IconButton>
-                    <div className={classes.navigation}>
-                        {navigationLayout.map(({link, nameFull, nameSmall}) => {
-                            return (
-                            <Button className={classes.link} onClick={() => toLink(link)}>
-                                <span className={classes.fulltext}>{nameFull}</span>
-                                <span className={classes.smalltext}>{nameSmall}</span>
-                            </Button>
-                            )
-                        })}
+                    <div >
+                        тут буит поиск
                     </div>
                 </Toolbar>
             </AppBar>

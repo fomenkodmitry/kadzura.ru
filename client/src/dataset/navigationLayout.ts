@@ -1,25 +1,21 @@
 ﻿
 type NavigationLayout = {
     link: string,
-    nameFull: string
-    nameSmall: string
+    name: string
 }
 
 const navigationLayout: NavigationLayout[] = [
     {
         link: '/',
-        nameFull: 'Главная',
-        nameSmall: 'Главная'
+        name: 'Главная',
     },
     {
         link: '/article',
-        nameFull: 'Статьи',
-        nameSmall: 'Статьи',
+        name: 'Статьи',
     },
     {
         link: '/interview-questions',
-        nameFull: 'Вопросы на собеседования',
-        nameSmall: 'Собес.',
+        name: 'Вопросы на собеседования',
     }
 ];
 

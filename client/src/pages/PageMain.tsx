@@ -1,8 +1,7 @@
 ﻿import React, {FC} from 'react';
 import {Main} from "../containers/Main";
 
-const PageMain: FC = ({ children }) => {
-  
+const PageMain: FC = () => {
     return (
         <Main/>
     );

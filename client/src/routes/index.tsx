@@ -1,10 +1,10 @@
-﻿import {Route} from "../models/Route";
-import PageMain from "../pages/PageMain";
+﻿import PageMain from "../pages/PageMain";
+import {Route} from "../models/Route";
 import PageArticle from "../pages/PageArticle";
 import PageInterviewQuestions from "../pages/PageInterviewQuestions";
-import PageAdminAuth from "../Pages/PageAdminAuth";
-import PageAdminArticleCreate from "../Pages/PageAdminArticleCreate";
-import PageAdminInterviewQuestionCreate from "../Pages/PageAdminInteviewQuestionCreate";
+import PageAdminAuth from "../pages/PageAdminAuth";
+import PageAdminArticleCreate from "../pages/PageAdminArticleCreate";
+import PageAdminInterviewQuestionCreate from "../pages/PageAdminInteviewQuestionCreate";
 
 const ROUTES: Route[] = [
     {
@@ -29,19 +29,19 @@ const ROUTES: Route[] = [
         id: 4,
         path: '/admin/auth',
         page: PageAdminAuth,
-        withLayout: true
+        withLayout: false
     },
     {
         id: 5,
         path: '/admin/article/create',
         page: PageAdminArticleCreate,
-        withLayout: true
+        withLayout: false
     },
     {
         id: 6,
         path: '/admin/interview-question/create',
         page: PageAdminInterviewQuestionCreate,
-        withLayout: true
+        withLayout: false
     },
     
 ];

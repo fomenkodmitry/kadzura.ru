@@ -8,6 +8,9 @@ import {changeMobileIsOpen} from "../features/mobile/mobileIsOpenSlice";
 import {useNamedSelector} from "../hooks/useNamedSelector";
 import mobileIsOpen from "../features/mobile/mobileIsOpenSlice";
 import {contacts} from "../dataset/contacts";
+import {navigationLayout} from "../dataset/navigationLayout";
+import {Button, Divider} from "@material-ui/core";
+import {useHistory} from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -39,11 +42,23 @@ const useStyles = makeStyles((theme: Theme) =>
             color: '#ffffff'
         },
         link: {
-            color: '#ffffff'
+            color: '#ffffff',
+        },     
+        buttonLink: {
+            color: '#ffffff',
+            maxWidth: '200px',
+            minWidth: '200px'
         },
         contacts: {
             textAlign: 'center',
             paddingTop: '30px'
+        },
+        navigation: {
+            paddingTop: '30px',
+            paddingBottom: '30px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
         },
     }),
 );
@@ -61,6 +76,12 @@ export const Navbar: FC = () => {
     };
     const {isOpen} = useNamedSelector('mobileIsOpen')
 
+    const history = useHistory();
+    const toLink = (link: string) => {
+        history.push(link);
+    };
+
+
     const drawer = (
         <div className={classes.drawerElements}>
             <div className={classes.toolbar}/>
@@ -71,6 +92,19 @@ export const Navbar: FC = () => {
             <Typography variant="subtitle2" align={"center"}>
                 тут типа мои статьи по IT, а так же раздел для подготовки к собесу
             </Typography>
+
+            <div className={classes.navigation}>
+                {navigationLayout.map(({link, name}) => {
+                    return (
+                        <div>
+                            <Button className={classes.buttonLink} onClick={() => toLink(link)}>
+                                {name}
+                            </Button>
+                            <Divider/>
+                        </div>
+                    )
+                })}
+            </div>
 
             <div className={classes.contacts}>
                 <div>
