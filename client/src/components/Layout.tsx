@@ -4,11 +4,14 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import {makeStyles, useTheme, Theme, createStyles} from '@material-ui/core/styles';
+import {makeStyles, Theme, createStyles} from '@material-ui/core/styles';
 import {Navbar} from "../containers/Navbar";
 import {useDispatch} from "react-redux";
 import {changeMobileIsOpen} from "../features/mobile/mobileIsOpenSlice";
+import {navigationLayout} from "../dataset/navigationLayout";
+import {Button} from "@material-ui/core";
+import {useHistory} from "react-router-dom";
+import {useNamedSelector} from "../hooks/useNamedSelector";
 
 const drawerWidth = 240;
 
@@ -41,10 +44,29 @@ const useStyles = makeStyles((theme: Theme) =>
             flexGrow: 1,
             padding: theme.spacing(3),
         },
+        navigation: {
+            justifyContent: 'center',
+            flexGrow: 1,
+            display: 'flex',
+            columnGap: '20px'
+        },
+        link: {
+            color: '#ffffff'
+        },
+        fulltext: {
+            [theme.breakpoints.down('md')]: {
+                display: 'none',
+            },
+        },
+        smalltext: {
+            [theme.breakpoints.up('sm')]: {
+                display: 'none',
+            },
+        }
     }),
 );
 
-const Layout: FC = ({ children }) => {
+const Layout: FC = ({children}) => {
     const classes = useStyles();
 
     const dispatch = useDispatch();
@@ -52,6 +74,13 @@ const Layout: FC = ({ children }) => {
     const changeMobileOpen = () => {
         dispatch(changeMobileIsOpen())
     };
+
+    const history = useHistory();
+    const toLink = (link: string) => {
+        history.push(link);
+    };
+
+    const {isOpen} = useNamedSelector('mobileIsOpen')
 
     return (
         <div className={classes.root}>
@@ -67,9 +96,16 @@ const Layout: FC = ({ children }) => {
                     >
                         <MenuIcon/>
                     </IconButton>
-                    <Typography variant="h6" noWrap>
-                        жопа
-                    </Typography>
+                    <div className={classes.navigation}>
+                        {navigationLayout.map(({link, nameFull, nameSmall}) => {
+                            return (
+                            <Button className={classes.link} onClick={() => toLink(link)}>
+                                <span className={classes.fulltext}>{nameFull}</span>
+                                <span className={classes.smalltext}>{nameSmall}</span>
+                            </Button>
+                            )
+                        })}
+                    </div>
                 </Toolbar>
             </AppBar>
             <Navbar/>

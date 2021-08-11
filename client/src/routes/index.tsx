@@ -1,6 +1,7 @@
 ﻿import {Route} from "../models/Route";
 import PageMain from "../pages/PageMain";
-import PageTest from "../pages/PageTest";
+import PageArticle from "../pages/PageArticle";
+import PageInterviewQuestions from "../pages/PageInterviewQuestions";
 
 const ROUTES: Route[] = [
     {
@@ -11,8 +12,14 @@ const ROUTES: Route[] = [
     },
     {
         id: 2,
-        path: '/test',
-        component: PageTest,
+        path: '/article',
+        component: PageArticle,
+        withLayout: true
+    },
+    {
+        id: 3,
+        path: '/interview-questions',
+        component: PageInterviewQuestions,
         withLayout: true
     },
 ];

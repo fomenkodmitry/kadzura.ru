@@ -14,7 +14,7 @@ const contacts: Contacts[] = [
     },
     {
         imageUrl: 'resources/linkedin.png',
-        link: 'https://www.linkedin.com/in/дмитрий-фоменко-15b547197m',
+        link: 'https://www.linkedin.com/in/дмитрий-фоменко-15b547197',
     },
     {
         imageUrl: 'resources/github.png',

@@ -8,16 +8,15 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-const PageTest: FC = () => {
+const PageInterviewQuestions: FC = () => {
     const classes = useStyles();
 
     return (
         <div>
             <div className={classes.toolbar}/>
-            <Typography paragraph>аавdыафывавыа
-                жопавываыафвыафывафывафdsadasdasdasdывафвыа
+            <Typography paragraph> вапрОсыи_)
             </Typography>
         </div>
     )
 }
-export default PageTest;
+export default PageInterviewQuestions;
