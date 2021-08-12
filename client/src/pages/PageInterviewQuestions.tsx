@@ -5,7 +5,6 @@ import {InterviewQuestions} from "../containers/InterviewQuestions";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        toolbar: theme.mixins.toolbar,
     }),
 );
 
@@ -14,10 +13,7 @@ const PageInterviewQuestions: FC = () => {
     useTitle("Вопросы для собеседования")
 
     return (
-        <div>
-            <div className={classes.toolbar}/>
-            <InterviewQuestions/>
-        </div>
+        <InterviewQuestions/>
     )
 }
 export default PageInterviewQuestions;

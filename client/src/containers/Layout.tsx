@@ -46,6 +46,7 @@ const useStyles = makeStyles((theme: Theme) =>
             flexGrow: 1,
             padding: theme.spacing(0),
         },
+        toolbar: theme.mixins.toolbar,
     }),
 );
 
@@ -79,7 +80,10 @@ const Layout: FC = ({children}) => {
                 </Toolbar>
             </AppBar>
             <Navbar/>
-            <main className={classes.content}>{children}</main>
+            <main className={classes.content}>
+                <div className={classes.toolbar}/>
+                {children}
+            </main>
         </div>
     );
 }

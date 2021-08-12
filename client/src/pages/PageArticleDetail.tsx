@@ -6,7 +6,6 @@ import {useParams} from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        toolbar: theme.mixins.toolbar,
     }),
 );
 
@@ -16,12 +15,9 @@ const PageArticle: FC = () => {
 
     useTitle('Статья:' + articleId)
     return (
-        <div>
-            <div className={classes.toolbar}/>
             <Typography paragraph>
                 Book details page: <strong>{articleId}</strong>
             </Typography>
-        </div>
     )
 }
 export default PageArticle;

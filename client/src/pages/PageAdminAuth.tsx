@@ -4,7 +4,6 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        toolbar: theme.mixins.toolbar,
     }),
 );
 
@@ -12,11 +11,8 @@ const PageAdminAuth: FC = () => {
     const classes = useStyles();
 
     return (
-        <div>
-            <div className={classes.toolbar}/>
-            <Typography paragraph>Авторизация
-            </Typography>
-        </div>
+        <Typography paragraph>Авторизация
+        </Typography>
     )
 }
 export default PageAdminAuth;

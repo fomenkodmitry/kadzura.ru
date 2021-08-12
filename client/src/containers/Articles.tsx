@@ -28,40 +28,37 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const Articles: FC = () => {
     const classes = useStyles();
-    
+
     const history = useHistory();
     const toLink = (link: string) => {
         history.push(link);
     };
-    
+
     return (
-        <div>
-            <div className={classes.toolbar}/>
-            <List className={classes.root}>
-                <ListItem className={classes.listItem} alignItems="flex-start">
-                    <ListItemText
-                        primary="Brunch this weekend?"
-                        primaryTypographyProps={{variant: "h4"}}
-                        secondary={
-                            <React.Fragment>
-                                <Typography
-                                    component="span"
-                                    variant="body2"
-                                    color="textPrimary"
-                                >
-                                </Typography>
-                                {" — I'll be in yohborhoodneighood yohborhoodneighood  yohborhoodneighood  yohborhoodneighood yohborhoodneighood yohborhoodneighood yohborhoodneighood yohborhoodneighood yohborhoodneighood  doing errands this…"}
-                                <br/>
-                                <a>aaa</a>
-                                <button>
-                                    f
-                                </button>
-                            </React.Fragment>
-                        }
-                    />
-                </ListItem>
-                <Divider className={classes.divider} light />
-            </List>
-        </div>
+        <List className={classes.root}>
+            <ListItem className={classes.listItem} alignItems="flex-start">
+                <ListItemText
+                    primary="Brunch this weekend?"
+                    primaryTypographyProps={{variant: "h4"}}
+                    secondary={
+                        <React.Fragment>
+                            <Typography
+                                component="span"
+                                variant="body2"
+                                color="textPrimary"
+                            >
+                            </Typography>
+                            {" — I'll be in yohborhoodneighood yohborhoodneighood  yohborhoodneighood  yohborhoodneighood yohborhoodneighood yohborhoodneighood yohborhoodneighood yohborhoodneighood yohborhoodneighood  doing errands this…"}
+                            <br/>
+                            <a>aaa</a>
+                            <button>
+                                f
+                            </button>
+                        </React.Fragment>
+                    }
+                />
+            </ListItem>
+            <Divider className={classes.divider} light/>
+        </List>
     )
 }
