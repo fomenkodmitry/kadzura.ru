@@ -2,7 +2,7 @@
 import {Route} from "../models/Route";
 import PageArticle from "../pages/PageArticle";
 import PageInterviewQuestions from "../pages/PageInterviewQuestions";
-import PageAdminAuth from "../pages/PageAdminAuth";
+import PageAdminLogin from "../pages/PageAdminLogin";
 import PageAdminArticleCreate from "../pages/PageAdminArticleCreate";
 import PageAdminInterviewQuestionCreate from "../pages/PageAdminInteviewQuestionCreate";
 import PageArticleDetail from "../pages/PageArticleDetail";
@@ -28,8 +28,8 @@ const ROUTES: Route[] = [
     },
     {
         id: 4,
-        path: '/admin/auth',
-        page: PageAdminAuth,
+        path: '/admin/login',
+        page: PageAdminLogin,
         withLayout: false
     },
     {

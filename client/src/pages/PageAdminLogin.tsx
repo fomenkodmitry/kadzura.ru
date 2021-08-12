@@ -1,18 +1,19 @@
 ﻿import React, {FC} from 'react';
 import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
+import {LoginForm} from "../containers/LognForm";
+import {useTitle} from "react-use";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
     }),
 );
 
-const PageAdminAuth: FC = () => {
+const PageAdminLogin: FC = () => {
     const classes = useStyles();
+    useTitle('Авторизация админа')
 
     return (
-        <Typography paragraph>Авторизация
-        </Typography>
+        <LoginForm/>
     )
 }
-export default PageAdminAuth;
+export default PageAdminLogin;
