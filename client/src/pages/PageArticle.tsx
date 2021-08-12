@@ -1,22 +1,11 @@
 ﻿import React, {FC} from 'react';
-import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
+import { useTitle } from 'react-use/lib';
+import {Articles} from "../containers/Articles";
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        toolbar: theme.mixins.toolbar,
-    }),
-);
-
-const PageArticle: FC = () => {
-    const classes = useStyles();
-
+const PageMain: FC = () => {
+    useTitle("Статьи")
     return (
-        <div>
-            <div className={classes.toolbar}/>
-            <Typography paragraph>СтатьИ!
-            </Typography>
-        </div>
-    )
+        <Articles/>
+    );
 }
-export default PageArticle;
+export default PageMain;

@@ -5,6 +5,7 @@ import PageInterviewQuestions from "../pages/PageInterviewQuestions";
 import PageAdminAuth from "../pages/PageAdminAuth";
 import PageAdminArticleCreate from "../pages/PageAdminArticleCreate";
 import PageAdminInterviewQuestionCreate from "../pages/PageAdminInteviewQuestionCreate";
+import PageArticleDetail from "../pages/PageArticleDetail";
 
 const ROUTES: Route[] = [
     {
@@ -42,6 +43,12 @@ const ROUTES: Route[] = [
         path: '/admin/interview-question/create',
         page: PageAdminInterviewQuestionCreate,
         withLayout: false
+    },
+    {
+        id: 7,
+        path: '/article/:articleId',
+        page: PageArticleDetail,
+        withLayout: true
     },
     
 ];

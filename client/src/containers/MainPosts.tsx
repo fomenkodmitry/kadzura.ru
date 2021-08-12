@@ -1,10 +1,10 @@
-﻿import React, {Component} from 'react';
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import Divider from '@material-ui/core/Divider';
-import ListItemText from '@material-ui/core/ListItemText';
-import Typography from '@material-ui/core/Typography';
+﻿import React, {FC} from "react";
+import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import Typography from "@material-ui/core/Typography";
+import Divider from "@material-ui/core/Divider";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-export default function AlignItemsList() {
+export const MainPosts: FC = () => {
     const classes = useStyles();
 
     return (
@@ -40,7 +40,6 @@ export default function AlignItemsList() {
                                 variant="body2"
                                 color="textPrimary"
                             >
-                                Ali Connors
                             </Typography>
                             {" — I'll be in yohborhoodneighood yohborhoodneighood  yohborhoodneighood  yohborhoodneighood yohborhoodneighood yohborhoodneighood yohborhoodneighood yohborhoodneighood yohborhoodneighood  doing errands this…"}
                             <br/>
@@ -54,5 +53,5 @@ export default function AlignItemsList() {
             </ListItem>
             <Divider className={classes.divider} light />
         </List>
-    );
+    )
 }

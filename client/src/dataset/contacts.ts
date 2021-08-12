@@ -6,18 +6,18 @@ type Contacts = {
 const contacts: Contacts[] = [
     {
         link: 'https://vk.com/kadzura',
-        imageUrl: 'resources/vk.png',
+        imageUrl: '/resources/vk.png',
     },
     {
         link: 'mailto:blackreaper200@gmail.com',
-        imageUrl: 'resources/gmail.png',
+        imageUrl: '/resources/gmail.png',
     },
     {
-        imageUrl: 'resources/linkedin.png',
+        imageUrl: '/resources/linkedin.png',
         link: 'https://www.linkedin.com/in/дмитрий-фоменко-15b547197',
     },
     {
-        imageUrl: 'resources/github.png',
+        imageUrl: '/resources/github.png',
         link: 'https://github.com/fomenkodmitry',
     },
 ];

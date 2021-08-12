@@ -90,7 +90,7 @@ export const Navbar: FC = () => {
                 мой блох
             </Typography>
             <Typography variant="subtitle2" align={"center"}>
-                тут типа мои статьи по IT, а так же раздел для подготовки к собесу
+                тут типа мои статьи по IT, а так же раздел для подготовки к собесам
             </Typography>
 
             <div className={classes.navigation}>

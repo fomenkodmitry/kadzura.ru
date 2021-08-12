@@ -8,6 +8,8 @@ import {makeStyles, Theme, createStyles} from '@material-ui/core/styles';
 import {useDispatch} from "react-redux";
 import {changeMobileIsOpen} from "../features/mobile/mobileIsOpenSlice";
 import {Navbar} from "./Navbar";
+import {FadeMenu} from "./FadeMenu";
+import {SearchBar} from "./SearchBar";
 
 const drawerWidth = 240;
 
@@ -35,7 +37,11 @@ const useStyles = makeStyles((theme: Theme) =>
                 display: 'none',
             },
         },
-        toolbar: theme.mixins.toolbar,
+        filters: {
+            flexGrow: 1,
+            display: 'flex',
+            justifyContent: 'flex-end'
+        },
         content: {
             flexGrow: 1,
             padding: theme.spacing(0),
@@ -66,8 +72,9 @@ const Layout: FC = ({children}) => {
                     >
                         <MenuIcon/>
                     </IconButton>
-                    <div >
-                        тут буит поиск
+                    <div className={classes.filters}>
+                        <SearchBar/>
+                        <FadeMenu/>
                     </div>
                 </Toolbar>
             </AppBar>

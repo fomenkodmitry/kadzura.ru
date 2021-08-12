@@ -1,7 +1,8 @@
 ﻿import React, {FC} from 'react';
 import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 import {useTitle} from "react-use";
-import {InterviewQuestions} from "../containers/InterviewQuestions";
+import {useParams} from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -9,15 +10,18 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-const PageInterviewQuestions: FC = () => {
+const PageArticle: FC = () => {
     const classes = useStyles();
-    useTitle("Вопросы для собеседования")
+    let {articleId} = useParams<{ articleId: string }>();
 
+    useTitle('Статья:' + articleId)
     return (
         <div>
             <div className={classes.toolbar}/>
-            <InterviewQuestions/>
+            <Typography paragraph>
+                Book details page: <strong>{articleId}</strong>
+            </Typography>
         </div>
     )
 }
-export default PageInterviewQuestions;
+export default PageArticle;
