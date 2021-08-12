@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         toolbar: theme.mixins.toolbar,
         root: {
-            width: '100%',
+            padding: '15%',
             backgroundColor: theme.palette.background.paper,
             display: 'flex',
             flexDirection: 'column',
@@ -51,7 +51,7 @@ export const Articles: FC = () => {
                             {" — I'll be in yohborhoodneighood yohborhoodneighood  yohborhoodneighood  yohborhoodneighood yohborhoodneighood yohborhoodneighood yohborhoodneighood yohborhoodneighood yohborhoodneighood  doing errands this…"}
                             <br/>
                             <a>aaa</a>
-                            <button>
+                            <button onClick={()=>toLink("/article/123")}>
                                 f
                             </button>
                         </React.Fragment>

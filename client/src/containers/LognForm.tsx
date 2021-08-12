@@ -9,7 +9,7 @@ import {Paper} from "@material-ui/core";
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         loginForm: {
-            marginTop: '15%',
+            padding: '10%',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -69,7 +69,7 @@ export const LoginForm = () => {
                         helperText={formik.touched.password && formik.errors.password}
                     />
                     <Button color="primary" variant="contained" fullWidth type="submit">
-                        Submit
+                        Авторизоваться
                     </Button>
                 </form>
             </Paper>
