@@ -7,9 +7,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import {makeStyles, Theme, createStyles} from '@material-ui/core/styles';
 import {useDispatch} from "react-redux";
 import {changeMobileIsOpen} from "../features/mobile/mobileIsOpenSlice";
-import {Navbar} from "./Navbar";
 import {FadeMenu} from "./FadeMenu";
 import {SearchBar} from "./SearchBar";
+import {Navbar} from "../components/Navbar";
 
 const drawerWidth = 240;
 

@@ -1,10 +1,12 @@
 ﻿import React, {FC} from 'react';
-import {ArticleCreateForm} from "../containers/ArticleCreateForm";
+import {useTitle} from "react-use";
+import {ArticleCreate} from "../containers/ArticleCreate";
 
 const PageAdminArticleCreate: FC = () => {
+    useTitle('Добавление статьи')
 
     return (
-        <ArticleCreateForm/>
+        <ArticleCreate/>
     )
 }
 export default PageAdminArticleCreate;

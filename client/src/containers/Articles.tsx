@@ -1,17 +1,16 @@
 ﻿import React, {FC} from "react";
 import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
+import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
-import List from "@material-ui/core/List";
 import {useHistory} from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        toolbar: theme.mixins.toolbar,
         root: {
-            padding: '15%',
+            width: '100%',
             backgroundColor: theme.palette.background.paper,
             display: 'flex',
             flexDirection: 'column',
@@ -28,12 +27,10 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const Articles: FC = () => {
     const classes = useStyles();
-
     const history = useHistory();
     const toLink = (link: string) => {
         history.push(link);
     };
-
     return (
         <List className={classes.root}>
             <ListItem className={classes.listItem} alignItems="flex-start">
@@ -58,7 +55,7 @@ export const Articles: FC = () => {
                     }
                 />
             </ListItem>
-            <Divider className={classes.divider} light/>
+            <Divider className={classes.divider} light />
         </List>
     )
 }

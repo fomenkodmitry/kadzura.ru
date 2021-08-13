@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         link: {
             color: '#ffffff',
-        },     
+        },
         buttonLink: {
             color: '#ffffff',
             maxWidth: '200px',

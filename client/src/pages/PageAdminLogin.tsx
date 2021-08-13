@@ -1,6 +1,6 @@
 ﻿import React, {FC} from 'react';
 import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
-import {LoginForm} from "../containers/LognForm";
+import {Login} from "../containers/Login";
 import {useTitle} from "react-use";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -13,7 +13,7 @@ const PageAdminLogin: FC = () => {
     useTitle('Авторизация админа')
 
     return (
-        <LoginForm/>
+        <Login/>
     )
 }
 export default PageAdminLogin;
