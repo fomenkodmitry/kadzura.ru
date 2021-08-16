@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Host</name>
+    </assembly>
+    <members>
+        <member name="T:Host.Controllers.AuthController">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Host.Controllers.CallbackController">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Host.Controllers.CaseController">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Host.Extensions.ContextExtensions">
+            <summary>
+            Context extensions
+            </summary>
+        </member>
+        <member name="M:Host.Extensions.ContextExtensions.InitData(Database.Context)">
+            <summary>
+            Init data
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:Host.Extensions.ControllerExtensions">
+            <summary>
+            Controller extensions
+            </summary>
+        </member>
+        <member name="M:Host.Extensions.ControllerExtensions.GetUserRole(Microsoft.AspNetCore.Mvc.ControllerBase)">
+            <summary>
+            Retreive uset role from auth context data
+            </summary>
+            <param name="controller"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
