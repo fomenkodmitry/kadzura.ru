@@ -6,6 +6,7 @@ import PageAdminLogin from "../pages/PageAdminLogin";
 import PageAdminArticleCreate from "../pages/PageAdminArticleCreate";
 import PageAdminInterviewQuestionCreate from "../pages/PageAdminInteviewQuestionCreate";
 import PageArticleDetail from "../pages/PageArticleDetail";
+import PageAdminTagCreate from "../pages/PageAdminTagCreate";
 
 const ROUTES: Route[] = [
     {
@@ -50,7 +51,12 @@ const ROUTES: Route[] = [
         page: PageArticleDetail,
         withLayout: true
     },
-    
+    {
+        id: 7,
+        path: '/admin/tag',
+        page: PageAdminTagCreate,
+        withLayout: false
+    },
 ];
 
 export { ROUTES };

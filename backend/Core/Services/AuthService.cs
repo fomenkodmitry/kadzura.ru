@@ -4,7 +4,6 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Core.Helpers;
-using Core.Models;
 using Core.Models.Auth;
 using Core.Services.Contracts;
 using Database.Repository.Contracts;

@@ -60,12 +60,17 @@ namespace Host
         private void AddRepository(IServiceCollection services, AppSettings appSettings)
         {
             services.AddTransient<IAdminRepository, AdminRepository>();
+            services.AddTransient<ITagRepository, TagRepository>();
+            services.AddTransient<IArticleRepository, ArticleRepository>();
+            services.AddTransient<IInterviewQuestionRepository, InterviewQuestionRepository>();
         }
         
         private void AddServices(IServiceCollection services, AppSettings appSettings)
         {
             services.AddTransient<IAuthService, AuthService>();
-
+            services.AddTransient<IArticleService, ArticleService>();
+            services.AddTransient<ITagService, TagService>();
+            services.AddTransient<IInterviewQuestionService, InterviewQuestionService>();
         }
     }
 }

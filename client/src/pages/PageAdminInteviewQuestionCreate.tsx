@@ -1,18 +1,12 @@
 ﻿import React, {FC} from 'react';
-import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-    }),
-);
+import {useTitle} from "react-use";
+import {InterviewQuestionCreate} from "../containers/InterviewQuestionCreate";
 
 const PageAdminInterviewQuestionCreate: FC = () => {
-    const classes = useStyles();
+    useTitle('Добавление вопроса')
 
     return (
-        <Typography paragraph>вопросы на собес!
-        </Typography>
+        <InterviewQuestionCreate/>
     )
 }
 export default PageAdminInterviewQuestionCreate;

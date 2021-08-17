@@ -2,7 +2,7 @@
 
 namespace Database.Models
 {
-    public class AdminModel : EntityBase
+    public class AdminModel : EntityBaseModel
     {
         public string AdminGuid { get; set; }
         public string Login { get; set; }

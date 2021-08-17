@@ -13,7 +13,7 @@ namespace Database
         public DbSet<AdminModel> Admins { get; set; }
         public DbSet<TagModel> Tags { get; set; }
         public DbSet<ArticleModel> Articles { get; set; }
-        public DbSet<InterviewQuestion> InterviewQuestions { get; set; }
+        public DbSet<InterviewQuestionModel> InterviewQuestions { get; set; }
 
         public Context(DbContextOptions dbContextOptions)
             : base(dbContextOptions)

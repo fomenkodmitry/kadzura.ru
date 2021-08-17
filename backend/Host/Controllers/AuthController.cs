@@ -10,7 +10,7 @@ namespace Host.Controllers
 {
     /// <summary>
     /// </summary>
-    [Route("api/v{version:apiVersion}/Auth")]
+    [Route("api/v{version:apiVersion}/auth")]
     [ApiVersion("1")]
     [ApiController]
     [Authorize]
@@ -23,7 +23,7 @@ namespace Host.Controllers
             _authService = authService;
         }
 
-        [HttpPost]
+        [HttpPost("login")]
         [ProducesResponseType(typeof(AuthResponseDto), StatusCodes.Status200OK)]
         [ApiVersionRange(1)]
         [AllowAnonymous]
