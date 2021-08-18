@@ -1,9 +1,10 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Database.Models;
 using Database.Repository.Contracts;
 using Kadzura.Extensions.Filtration.EFCore;
-using Kadzura.Extensions.Filtration.Models.Contracts;
+using Kadzura.Extensions.Filtration.Models;
 using Kadzura.Extensions.Pagination.EntityFramework;
 using Kadzura.Extensions.Pagination.Models;
 using Kadzura.Extensions.Pagination.Models.Contracts;
@@ -20,11 +21,11 @@ namespace Database.Repository
             _context = context;
         }
 
-        public async Task<PagedData<TModel>> GetList(IPagedQuery pagedQuery, IFilteredQuery filteredQuery)
+        public async Task<PagedData<TModel>> GetList(IPagedQuery pagedQuery, IReadOnlyCollection<FilterContainer> filteredQuery)
         {
             var entity = _context.Set<TModel>();
             var result = await entity
-                .Filter(filteredQuery.Filters)
+                .Filter(filteredQuery)
                 .OrderByDescending(p => p.Id)
                 .ToPagedDataAsync(pagedQuery);
             

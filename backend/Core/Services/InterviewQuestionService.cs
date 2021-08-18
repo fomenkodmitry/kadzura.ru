@@ -1,8 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Core.Services.Contracts;
 using Database.Models;
 using Database.Repository.Contracts;
-using Kadzura.Extensions.Filtration.Models.Contracts;
+using Kadzura.Extensions.Filtration.Models;
 using Kadzura.Extensions.Pagination.Models;
 using Kadzura.Extensions.Pagination.Models.Contracts;
 
@@ -17,7 +18,7 @@ namespace Core.Services
             _interviewQuestionRepository = interviewQuestionRepository;
         }
 
-        public async Task<PagedData<InterviewQuestionModel>> GetList(IPagedQuery pagedQuery, IFilteredQuery filteredQuery)
+        public async Task<PagedData<InterviewQuestionModel>> GetList(IPagedQuery pagedQuery, IReadOnlyCollection<FilterContainer> filteredQuery)
         {
             return await _interviewQuestionRepository.GetList(pagedQuery, filteredQuery);
         }

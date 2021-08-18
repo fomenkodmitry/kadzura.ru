@@ -27,7 +27,7 @@ namespace Host.Controllers
         [ProducesResponseType(typeof(AuthResponseDto), StatusCodes.Status200OK)]
         [ApiVersionRange(1)]
         [AllowAnonymous]
-        public async Task<ActionResult> Login([FromBody] AuthRequestDto requestDto)
+        public async Task<IActionResult> Login([FromBody] AuthRequestDto requestDto)
         {
             return Ok(await _authService.Login(requestDto));
         }
