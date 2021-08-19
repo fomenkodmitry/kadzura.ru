@@ -1,12 +1,12 @@
 ﻿import {combineReducers} from 'redux';
 import interviewQuestions from "../features/interviewQuestions/interviewQuestionsSlice";
-import counterTest from "../features/counter/counterSlice";
-import mobileIsOpen from "../features/mobile/mobileIsOpenSlice";
+import navbarMobileIsOpen from "../features/mobile/navbarMobileIsOpenSlice";
+import tags from "../features/tags/tagSlice";
 
 const reducer = combineReducers({
     interviewQuestions,
-    counterTest,
-    mobileIsOpen
+    navbarMobileIsOpen,
+    tags
 });
 
 export type ReduxState = ReturnType<typeof reducer>;

@@ -51,6 +51,7 @@
     "formik": "^2.2.9",
     "mui-rff": "^3.0.10",
     "notistack": "^1.0.10",
+    "react-infinite-scroll-component": "^6.1.0",
     "react-redux": "^7.2.4",
     "yup": "^0.32.9"
   }

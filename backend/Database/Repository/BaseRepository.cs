@@ -21,7 +21,7 @@ namespace Database.Repository
             _context = context;
         }
 
-        public async Task<PagedData<TModel>> GetList(IPagedQuery pagedQuery, IReadOnlyCollection<FilterContainer> filteredQuery)
+        public virtual async Task<PagedData<TModel>> GetList(IPagedQuery pagedQuery, IReadOnlyCollection<FilterContainer> filteredQuery)
         {
             var entity = _context.Set<TModel>();
             var result = await entity

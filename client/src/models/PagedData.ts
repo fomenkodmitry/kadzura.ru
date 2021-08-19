@@ -1,4 +1,4 @@
 ﻿export type PagedData<Data> = {
-    Data: Data[];
-    TotalCount: number;
+    data: Data[];
+    totalCount: number;
 };

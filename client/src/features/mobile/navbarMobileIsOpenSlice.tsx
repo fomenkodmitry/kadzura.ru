@@ -5,8 +5,8 @@ const initialState: Mobile = {
     isOpen: false
 };
 
-const navBarMobileIsOpenSlice = createSlice({
-    name: 'navBarMobileIsOpen',
+const navbarMobileIsOpenSlice = createSlice({
+    name: 'navbarMobileIsOpen',
     initialState,
     reducers: {
         changeNavbarMobileIsOpen(state,) {
@@ -21,6 +21,6 @@ const navBarMobileIsOpenSlice = createSlice({
 export const {
     changeNavbarMobileIsOpen,
     setNavbarMobileIsOpen
-} = navBarMobileIsOpenSlice.actions;
+} = navbarMobileIsOpenSlice.actions;
 
-export default navBarMobileIsOpenSlice.reducer;
+export default navbarMobileIsOpenSlice.reducer;

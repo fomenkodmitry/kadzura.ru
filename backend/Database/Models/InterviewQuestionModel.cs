@@ -7,6 +7,6 @@ namespace Database.Models
         public string Question { get; set; }
         public string Answer { get; set; }
 
-        public ICollection<TagModel> Tags { get; set; }
+        public ICollection<InterviewQuestionToTagsModel> Tags { get; set; }
     }
 }

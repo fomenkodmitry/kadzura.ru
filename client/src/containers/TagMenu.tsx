@@ -2,6 +2,7 @@
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import {Dialog, DialogActions, DialogContent, DialogTitle, FormControl, InputLabel, Select} from "@material-ui/core";
+import {TagMenuList} from "../components/TagMenuList";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -21,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export const FadeMenu : React.FC = () => {
+export const TagMenu : React.FC = () => {
 
     const classes = useStyles();
 
@@ -44,28 +45,13 @@ export const FadeMenu : React.FC = () => {
                             <InputLabel shrink htmlFor="select-multiple-native">
                                 Теги
                             </InputLabel>
-                            <Select
-                                multiple
-                                native
-                                value={""}
-                                onChange={()=>alert("a")}
-                                inputProps={{
-                                    id: 'select-multiple-native',
-                                }}
-                            >
-                                <option key="11" value="1">
-                                    fadsfsa
-                                </option>
-                                <option key="22" value="22">
-                                    fsdafasdfasdfasdf
-                                </option>
-                            </Select>
+                            <TagMenuList/>
                         </FormControl>
                     </form>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">
-                        Закрыть
+                        Ок
                     </Button>
                 </DialogActions>
             </Dialog>

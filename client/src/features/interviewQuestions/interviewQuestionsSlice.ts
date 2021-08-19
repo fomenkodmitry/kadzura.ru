@@ -1,10 +1,9 @@
 ﻿import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {InterviewQuestionPaged} from "../../models/InterviewQuestion";
 
-
 const initialState: InterviewQuestionPaged = {
-    Data: [],
-    TotalCount: 1
+    data: [],
+    totalCount: 1
 };
 
 const interviewQuestionsSlice = createSlice({
@@ -12,10 +11,13 @@ const interviewQuestionsSlice = createSlice({
     initialState,
     reducers: {
         setInterviewQuestions(state, {payload}: PayloadAction<InterviewQuestionPaged>) {
-            state.Data = payload.Data;
-            state.TotalCount = payload.TotalCount;
+            state.data = payload.data;
+            state.totalCount = payload.totalCount;
         },
     },
 });
+export const {
+    setInterviewQuestions
+} = interviewQuestionsSlice.actions;
 
 export default interviewQuestionsSlice.reducer;

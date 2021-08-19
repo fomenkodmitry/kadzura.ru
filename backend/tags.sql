@@ -1,0 +1,12 @@
+INSERT INTO Tags (Id, Name, DateCreation) VALUES (1, 'C#', 1305906373587443712);
+INSERT INTO Tags (Id, Name, DateCreation) VALUES (2, 'SQL', 1305906373587443712);
+INSERT INTO Tags (Id, Name, DateCreation) VALUES (3, 'Postgres', 1305906373587443712);
+INSERT INTO Tags (Id, Name, DateCreation) VALUES (4, 'Programming', 1305906373587443712);
+INSERT INTO Tags (Id, Name, DateCreation) VALUES (5, 'Async', 1305906373587443712);
+INSERT INTO Tags (Id, Name, DateCreation) VALUES (6, 'Redis', 1305906373587443712);
+INSERT INTO Tags (Id, Name, DateCreation) VALUES (7, 'NoSql', 1305906373587443712);
+INSERT INTO Tags (Id, Name, DateCreation) VALUES (8, 'Actor', 1305906373587443712);
+INSERT INTO Tags (Id, Name, DateCreation) VALUES (9, 'OOP', 1305906373587443712);
+INSERT INTO Tags (Id, Name, DateCreation) VALUES (10, 'Microservices', 1305906373587443712);
+INSERT INTO Tags (Id, Name, DateCreation) VALUES (11, 'Api', 1305906373587443712);
+INSERT INTO Tags (Id, Name, DateCreation) VALUES (12, 'JS', 1305906373587443712);

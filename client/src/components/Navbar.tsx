@@ -4,9 +4,9 @@ import Drawer from "@material-ui/core/Drawer";
 import {createStyles, makeStyles, Theme, useTheme} from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import {useDispatch} from "react-redux";
-import {changeNavbarMobileIsOpen} from "../features/mobile/mobileIsOpenSlice";
+import {changeNavbarMobileIsOpen} from "../features/mobile/navbarMobileIsOpenSlice";
 import {useNamedSelector} from "../hooks/useNamedSelector";
-import mobileIsOpen from "../features/mobile/mobileIsOpenSlice";
+import navbarMobileIsOpen from "../features/mobile/navbarMobileIsOpenSlice";
 import {contacts} from "../dataset/contacts";
 import {navigationLayout} from "../dataset/navigationLayout";
 import {Button, Divider} from "@material-ui/core";
@@ -74,7 +74,7 @@ export const Navbar: FC = () => {
     const changeNavbarMobileOpen = () => {
         dispatch(changeNavbarMobileIsOpen())
     };
-    const {isOpen} = useNamedSelector('mobileIsOpen')
+    const {isOpen} = useNamedSelector('navbarMobileIsOpen')
 
     const history = useHistory();
     const toLink = (link: string) => {

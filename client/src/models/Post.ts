@@ -1,4 +1,4 @@
-﻿import {Category} from "./Category";
+﻿import {Tag} from "./Tag";
 import {PagedData} from "./PagedData";
 
 type Post = {
@@ -6,7 +6,7 @@ type Post = {
     DateCreated: string;
     Title: string;
     Text: string;
-    Categories: Category[];
+    Categories: Tag[];
     IsArticle: boolean
 }
 

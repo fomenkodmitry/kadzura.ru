@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Database.Migrations
 {
@@ -60,38 +59,70 @@ namespace Database.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: true),
-                    ArticleModelId = table.Column<int>(type: "INTEGER", nullable: true),
-                    InterviewQuestionId = table.Column<int>(type: "INTEGER", nullable: true),
                     DateCreation = table.Column<long>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Tags", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ArticleToTags",
+                columns: table => new
+                {
+                    ArticleId = table.Column<int>(type: "INTEGER", nullable: false),
+                    TagId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ArticleToTags", x => new { x.ArticleId, x.TagId });
                     table.ForeignKey(
-                        name: "FK_Tags_Articles_ArticleModelId",
-                        column: x => x.ArticleModelId,
+                        name: "FK_ArticleToTags_Articles_ArticleId",
+                        column: x => x.ArticleId,
                         principalTable: "Articles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Tags_InterviewQuestions_InterviewQuestionId",
+                        name: "FK_ArticleToTags_Tags_TagId",
+                        column: x => x.TagId,
+                        principalTable: "Tags",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "InterviewQuestionToTags",
+                columns: table => new
+                {
+                    InterviewQuestionId = table.Column<int>(type: "INTEGER", nullable: false),
+                    TagId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_InterviewQuestionToTags", x => new { x.InterviewQuestionId, x.TagId });
+                    table.ForeignKey(
+                        name: "FK_InterviewQuestionToTags_InterviewQuestions_InterviewQuestionId",
                         column: x => x.InterviewQuestionId,
                         principalTable: "InterviewQuestions",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_InterviewQuestionToTags_Tags_TagId",
+                        column: x => x.TagId,
+                        principalTable: "Tags",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tags_ArticleModelId",
-                table: "Tags",
-                column: "ArticleModelId");
+                name: "IX_ArticleToTags_TagId",
+                table: "ArticleToTags",
+                column: "TagId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tags_InterviewQuestionId",
-                table: "Tags",
-                column: "InterviewQuestionId");
-            
-
+                name: "IX_InterviewQuestionToTags_TagId",
+                table: "InterviewQuestionToTags",
+                column: "TagId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -100,13 +131,19 @@ namespace Database.Migrations
                 name: "Admins");
 
             migrationBuilder.DropTable(
-                name: "Tags");
+                name: "ArticleToTags");
+
+            migrationBuilder.DropTable(
+                name: "InterviewQuestionToTags");
 
             migrationBuilder.DropTable(
                 name: "Articles");
 
             migrationBuilder.DropTable(
                 name: "InterviewQuestions");
+
+            migrationBuilder.DropTable(
+                name: "Tags");
         }
     }
 }

@@ -14,6 +14,8 @@ namespace Database
         public DbSet<TagModel> Tags { get; set; }
         public DbSet<ArticleModel> Articles { get; set; }
         public DbSet<InterviewQuestionModel> InterviewQuestions { get; set; }
+        public DbSet<InterviewQuestionToTagsModel> InterviewQuestionToTags { get; set; }
+        public DbSet<ArticleToTagsModel> ArticleToTags { get; set; }
 
         public Context(DbContextOptions dbContextOptions)
             : base(dbContextOptions)
@@ -45,6 +47,9 @@ namespace Database
                             .HasConversion(new DateTimeOffsetToBinaryConverter());
                     }
                 }
+
+                builder.Entity<ArticleToTagsModel>().HasKey(p => new {p.ArticleId, p.TagId});
+                builder.Entity<InterviewQuestionToTagsModel>().HasKey(p => new {p.InterviewQuestionId, p.TagId});
             }
         }
     }

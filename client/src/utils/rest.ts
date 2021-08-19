@@ -84,6 +84,8 @@ class RestService {
     DELETE<TResponse>(url: string, options?: RequestInit): Promise<TResponse> {
         return this.request<TResponse>(url, { ...options, method: 'DELETE' });
     }
+    
+    public static readonly GetInstance = new RestService();
 }
 
 export { RestService };

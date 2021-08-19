@@ -1,4 +1,4 @@
-﻿import {Category} from "./Category";
+﻿import {Tag} from "./Tag";
 import {PagedData} from "./PagedData";
 
 type Article = {
@@ -6,7 +6,7 @@ type Article = {
     DateCreated: string;
     Tittle: string;
     Text: string;
-    Categories: Category[];
+    Tags: Tag[];
 };
 
 type ArticlePaged = PagedData<Article>;

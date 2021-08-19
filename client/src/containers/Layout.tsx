@@ -6,8 +6,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import {makeStyles, Theme, createStyles} from '@material-ui/core/styles';
 import {useDispatch} from "react-redux";
-import {changeMobileIsOpen} from "../features/mobile/mobileIsOpenSlice";
-import {FadeMenu} from "./FadeMenu";
+import {changeNavbarMobileIsOpen} from "../features/mobile/navbarMobileIsOpenSlice";
+import {TagMenu} from "./TagMenu";
 import {SearchBar} from "./SearchBar";
 import {Navbar} from "../components/Navbar";
 
@@ -56,7 +56,7 @@ const Layout: FC = ({children}) => {
     const dispatch = useDispatch();
 
     const changeMobileOpen = () => {
-        dispatch(changeMobileIsOpen())
+        dispatch(changeNavbarMobileIsOpen())
     };
 
     return (
@@ -75,7 +75,7 @@ const Layout: FC = ({children}) => {
                     </IconButton>
                     <div className={classes.filters}>
                         <SearchBar/>
-                        <FadeMenu/>
+                        <TagMenu/>
                     </div>
                 </Toolbar>
             </AppBar>
