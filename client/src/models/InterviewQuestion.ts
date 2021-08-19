@@ -11,4 +11,5 @@ type InterviewQuestion = {
 
 type InterviewQuestionPaged = PagedData<InterviewQuestion>;
 
+
 export type  { InterviewQuestion, InterviewQuestionPaged };

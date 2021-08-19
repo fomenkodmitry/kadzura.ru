@@ -4,7 +4,7 @@ import Drawer from "@material-ui/core/Drawer";
 import {createStyles, makeStyles, Theme, useTheme} from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import {useDispatch} from "react-redux";
-import {changeMobileIsOpen} from "../features/mobile/mobileIsOpenSlice";
+import {changeNavbarMobileIsOpen} from "../features/mobile/mobileIsOpenSlice";
 import {useNamedSelector} from "../hooks/useNamedSelector";
 import mobileIsOpen from "../features/mobile/mobileIsOpenSlice";
 import {contacts} from "../dataset/contacts";
@@ -71,8 +71,8 @@ export const Navbar: FC = () => {
 
     const dispatch = useDispatch();
 
-    const changeMobileOpen = () => {
-        dispatch(changeMobileIsOpen())
+    const changeNavbarMobileOpen = () => {
+        dispatch(changeNavbarMobileIsOpen())
     };
     const {isOpen} = useNamedSelector('mobileIsOpen')
 
@@ -80,7 +80,6 @@ export const Navbar: FC = () => {
     const toLink = (link: string) => {
         history.push(link);
     };
-
 
     const drawer = (
         <div className={classes.drawerElements}>
@@ -129,7 +128,7 @@ export const Navbar: FC = () => {
                     variant="temporary"
                     anchor={theme.direction === 'rtl' ? 'right' : 'left'}
                     open={isOpen}
-                    onClose={changeMobileOpen}
+                    onClose={changeNavbarMobileOpen}
                     classes={{
                         paper: classes.drawerPaper,
                     }}

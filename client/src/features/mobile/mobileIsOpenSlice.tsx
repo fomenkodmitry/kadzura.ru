@@ -5,24 +5,22 @@ const initialState: Mobile = {
     isOpen: false
 };
 
-const mobileIsOpenSlice = createSlice({
-    name: 'mobileIsOpen',
+const navBarMobileIsOpenSlice = createSlice({
+    name: 'navBarMobileIsOpen',
     initialState,
     reducers: {
-        changeMobileIsOpen(state,) {
-            console.log(222222222222)
+        changeNavbarMobileIsOpen(state,) {
             state.isOpen = !state.isOpen;
         },
-        setMobileIsOpen(state, {payload}: PayloadAction<Mobile>) {
-            console.log(222222222222)
+        setNavbarMobileIsOpen(state, {payload}: PayloadAction<Mobile>) {
             state.isOpen = payload.isOpen;
         },
     },
 });
 
 export const {
-    changeMobileIsOpen,
-    setMobileIsOpen
-} = mobileIsOpenSlice.actions;
+    changeNavbarMobileIsOpen,
+    setNavbarMobileIsOpen
+} = navBarMobileIsOpenSlice.actions;
 
-export default mobileIsOpenSlice.reducer;
+export default navBarMobileIsOpenSlice.reducer;
