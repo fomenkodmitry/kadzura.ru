@@ -3,40 +3,39 @@ import {Select} from "@material-ui/core";
 import {useDispatch} from "react-redux";
 import {useNamedSelector} from "../hooks/useNamedSelector";
 import {thunkGetTags} from "../features/tags/thunkGetTags";
+import {setSelectorTags} from "../features/tagSelector/tagSelectorSlice";
+import {SelectorTag} from "../models/Tag";
 
 export const TagMenuList: React.FC = () => {
 
     const dispatch = useDispatch();
     const tags = useNamedSelector('tags')
+    const tagSelector = useNamedSelector('tagsSelector')
 
     useEffect(() => {
             dispatch(thunkGetTags())
         },
         [dispatch]
     )
-
-    const [personName, setPersonName] = React.useState<string[]>([]);
-
-    const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-        setPersonName(event.target.value as string[]);
-    };
     
     const handleChangeMultiple = (event: React.ChangeEvent<{ value: unknown }>) => {
         const { options } = event.target as HTMLSelectElement;
-        const value: string[] = [];
+        const value: SelectorTag = {
+            data: []
+        };
         for (let i = 0, l = options.length; i < l; i += 1) {
             if (options[i].selected) {
-                value.push(options[i].value);
+                value.data.push(...tags.data.filter(p => p.id.toString() == options[i].value));
             }
         }
-        setPersonName(value);
+        dispatch(setSelectorTags(value))
     };
-    
+
     return (
         <Select
             multiple
             native
-            value={personName}
+            value={tagSelector.data.map(p => p.id.toString())}
             onChange={handleChangeMultiple}
             inputProps={{
                 id: 'select-multiple-native',

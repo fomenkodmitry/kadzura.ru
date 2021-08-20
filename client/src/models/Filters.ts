@@ -1,7 +1,7 @@
 ﻿type Filter = {
-    Field: string,
-    Operation: "contains"
-    Values : string[]
+    field: string,
+    operation: "contains" | "equal"
+    values : string[] | number[]
 }
 type Filters = Filter[]
 

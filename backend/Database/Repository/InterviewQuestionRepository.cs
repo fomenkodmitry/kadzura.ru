@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Database.Models;
 using Database.Repository.Contracts;
-using Kadzura.Extensions.Filtration.EFCore;
+using Kadzura.Extensions.Filtration.EntityFramework;
 using Kadzura.Extensions.Filtration.Models;
 using Kadzura.Extensions.Pagination.EntityFramework;
 using Kadzura.Extensions.Pagination.Models;

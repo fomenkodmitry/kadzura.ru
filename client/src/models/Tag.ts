@@ -11,4 +11,8 @@ type Tag = {
 
 type TagPaged = PagedData<TagValue>;
 
-export type  {Tag, TagValue, TagPaged}
+type SelectorTag = {
+    data: TagValue[]
+};
+
+export type  {Tag, TagValue, TagPaged, SelectorTag}

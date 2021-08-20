@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const PageInterviewQuestions: FC = () => {
     const classes = useStyles();
-    useTitle("Вопросы для собеседования")
+    useTitle("Вопросы на собеседования")
 
     return (
         <InterviewQuestions/>
