@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Common;
-using Host.Filters;
+using Kadzura.Extensions.Filtration;
 using Kadzura.Web.Extensions.Extensions;
 
 namespace Host
