@@ -54,6 +54,7 @@ export const InterviewQuestionList: React.FC = () => {
     const dispatch = useDispatch();
     const interviewQuestions = useNamedSelector('interviewQuestions')
     const tagSelector = useNamedSelector('tagsSelector')
+    const search = useNamedSelector('search')
 
     const [page, setPage] = useState(1)
 
@@ -74,23 +75,37 @@ export const InterviewQuestionList: React.FC = () => {
                     }
                 ]
             }
+            if (search?.text.length) {
+                filter.Filters = [...filter.Filters,
+                    // {
+                    //     field: "question",
+                    //     operation: "contains",
+                    //     values: [search.text]
+                    // },
+                    {
+                        field: "question",
+                        operation: "contains",
+                        values: [search.text]
+                    }
+                ]
+            }
             dispatch(thunkGetInterviewQuestions(filter))
         },
-        [dispatch, tagSelector, page]
+        [dispatch, tagSelector, page, search]
     )
 
     useEffect(() => {
         dispatch(clearInterviewQuestions())
         setPage(1)
-    }, [tagSelector])
+    }, [tagSelector, search])
+    
     return (
         <Grid container style={{justifyContent: 'center'}}>
             <div style={{flexBasis: '100%'}}>
                 <InfiniteScroll
                     dataLength={interviewQuestions.data.length}
                     next={() => {
-                        const nextPage = page + 1
-                        setPage(nextPage)
+                        setPage(page + 1)
                     }}
                     hasMore={page !== interviewQuestions.totalPage}
                     loader={<h4>Loading...</h4>}

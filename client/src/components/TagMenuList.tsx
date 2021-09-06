@@ -18,7 +18,7 @@ export const TagMenuList: React.FC = () => {
         [dispatch]
     )
     
-    const handleChangeMultiple = (event: React.ChangeEvent<{ value: unknown }>) => {
+    const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
         const { options } = event.target as HTMLSelectElement;
         const value: SelectorTag = {
             data: []
@@ -36,7 +36,7 @@ export const TagMenuList: React.FC = () => {
             multiple
             native
             value={tagSelector.data.map(p => p.id.toString())}
-            onChange={handleChangeMultiple}
+            onChange={handleChange}
             inputProps={{
                 id: 'select-multiple-native',
             }}

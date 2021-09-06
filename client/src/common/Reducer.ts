@@ -3,12 +3,14 @@ import interviewQuestions from "../features/interviewQuestions/interviewQuestion
 import navbarMobileIsOpen from "../features/mobile/navbarMobileIsOpenSlice";
 import tags from "../features/tags/tagSlice";
 import tagsSelector from "../features/tagSelector/tagSelectorSlice";
+import search from "../features/search/searchSlice";
 
 const reducer = combineReducers({
     interviewQuestions,
     navbarMobileIsOpen,
     tags,
-    tagsSelector
+    tagsSelector,
+    search
 });
 
 export type ReduxState = ReturnType<typeof reducer>;

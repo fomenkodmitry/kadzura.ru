@@ -14,6 +14,7 @@ const interviewQuestionsSlice = createSlice({
         setInterviewQuestions(state, {payload}: PayloadAction<InterviewQuestionPaged>) {
             state.data = [...state.data, ...payload.data];
             state.totalCount = payload.totalCount;
+            state.totalPage = payload.totalPage
         },
         clearInterviewQuestions(state) {
             state.data = []
