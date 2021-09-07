@@ -1,5 +1,4 @@
-﻿import PageMain from "../pages/PageMain";
-import {Route} from "../models/Route";
+﻿import {Route} from "../models/Route";
 import PageArticle from "../pages/PageArticle";
 import PageInterviewQuestions from "../pages/PageInterviewQuestions";
 import PageAdminLogin from "../pages/PageAdminLogin";
@@ -12,12 +11,6 @@ const ROUTES: Route[] = [
     {
         id: 1,
         path: '/',
-        page: PageMain,
-        withLayout: true
-    },
-    {
-        id: 2,
-        path: '/article',
         page: PageArticle,
         withLayout: true
     },

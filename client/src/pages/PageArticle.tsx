@@ -2,10 +2,10 @@
 import { useTitle } from 'react-use/lib';
 import {Articles} from "../containers/Articles";
 
-const PageMain: FC = () => {
+const PageArticle: FC = () => {
     useTitle("Статьи")
     return (
         <Articles/>
     );
 }
-export default PageMain;
+export default PageArticle;

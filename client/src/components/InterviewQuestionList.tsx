@@ -77,13 +77,8 @@ export const InterviewQuestionList: React.FC = () => {
             }
             if (search?.text.length) {
                 filter.Filters = [...filter.Filters,
-                    // {
-                    //     field: "question",
-                    //     operation: "contains",
-                    //     values: [search.text]
-                    // },
                     {
-                        field: "question",
+                        field: "fulltext",
                         operation: "contains",
                         values: [search.text]
                     }
@@ -98,7 +93,7 @@ export const InterviewQuestionList: React.FC = () => {
         dispatch(clearInterviewQuestions())
         setPage(1)
     }, [tagSelector, search])
-    
+
     return (
         <Grid container style={{justifyContent: 'center'}}>
             <div style={{flexBasis: '100%'}}>
@@ -139,7 +134,8 @@ export const InterviewQuestionList: React.FC = () => {
                             )
                         })
                     }
-                </InfiniteScroll></div>
+                </InfiniteScroll>
+            </div>
 
         </Grid>
     );

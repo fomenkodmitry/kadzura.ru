@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Kadzura.Extensions.Filtration.Models;
 
 namespace Database.Models
 {
@@ -7,6 +8,8 @@ namespace Database.Models
         public string Title { get; set; }
         public string Text { get; set; }
 
+        [Filters("fulltext", FilterOperationsType.String)]
+        public string FullText { get; set; }
         public ICollection<ArticleToTagsModel> Tags { get; set; }
     }
 }

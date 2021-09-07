@@ -7,10 +7,6 @@ type NavigationLayout = {
 const navigationLayout: NavigationLayout[] = [
     {
         link: '/',
-        name: 'Главная',
-    },
-    {
-        link: '/article',
         name: 'Статьи',
     },
     {
