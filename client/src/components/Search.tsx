@@ -2,9 +2,6 @@
 import {InputBase} from "@material-ui/core";
 import {alpha, makeStyles} from "@material-ui/core/styles";
 import React from "react";
-import {useDispatch} from "react-redux";
-import {setSearch} from "../features/search/searchSlice";
-import {useDebounce} from "../hooks/useDebounce";
 
 const useStyles = makeStyles((theme) => ({
     search: {
@@ -49,18 +46,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-export const Search : React.FC = () => {
+type Props = { handleChange: any };
+
+export const Search : React.FC<Props> = (props)  => {
 
     const classes = useStyles()
-
-    const dispatch = useDispatch();
-
-    const handleChange = useDebounce((event: React.ChangeEvent<HTMLInputElement>) => {
-        if (event.target.value.length < 3)
-            dispatch(setSearch({text: ""}));
-
-        dispatch(setSearch({text: event.target.value}))
-    }, 300);
 
     return (
         <div className={classes.search}>
@@ -74,7 +64,7 @@ export const Search : React.FC = () => {
                     input: classes.inputInput,
                 }}
                 inputProps={{'aria-label': 'search'}}
-                onChange={handleChange}
+                onChange={props.handleChange}
             />
         </div>
     )

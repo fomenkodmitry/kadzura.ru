@@ -1,8 +1,13 @@
 ﻿import Button from '@material-ui/core/Button';
-import React from "react";
+import React, {useEffect} from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import {Dialog, DialogActions, DialogContent, DialogTitle, FormControl, InputLabel, Select} from "@material-ui/core";
 import {TagMenuList} from "../components/TagMenuList";
+import {useDispatch} from "react-redux";
+import {useNamedSelector} from "../hooks/useNamedSelector";
+import {thunkGetTags} from "../features/tags/thunkGetTags";
+import {SelectorTag} from "../models/Tag";
+import {setSelectorTags} from "../features/tagSelector/tagSelectorSlice";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -26,6 +31,29 @@ export const TagMenu : React.FC = () => {
 
     const classes = useStyles();
 
+    const dispatch = useDispatch();
+    const tags = useNamedSelector('tags')
+    const tagSelector = useNamedSelector('tagsSelector')
+
+    useEffect(() => {
+            dispatch(thunkGetTags())
+        },
+        [dispatch]
+    )
+
+    const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+        const { options } = event.target as HTMLSelectElement;
+        const value: SelectorTag = {
+            data: []
+        };
+        for (let i = 0, l = options.length; i < l; i += 1) {
+            if (options[i].selected) {
+                value.data.push(...tags.data.filter(p => p.id.toString() == options[i].value));
+            }
+        }
+        dispatch(setSelectorTags(value))
+    };
+    
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -45,7 +73,7 @@ export const TagMenu : React.FC = () => {
                             <InputLabel shrink htmlFor="select-multiple-native">
                                 Теги
                             </InputLabel>
-                            <TagMenuList/>
+                            <TagMenuList handleChange={handleChange} tagSelector={tagSelector} tags={tags}/>
                         </FormControl>
                     </form>
                 </DialogContent>

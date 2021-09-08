@@ -5,13 +5,9 @@ import Typography from "@material-ui/core/Typography";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import {Grid} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
-import React, {useEffect, useState} from "react";
-import {useDispatch} from "react-redux";
-import {thunkGetInterviewQuestions} from "../features/interviewQuestions/thunkGetInterviewQuestions";
-import {useNamedSelector} from "../hooks/useNamedSelector";
-import {InterviewQuestionListDto} from "../models/InterviewQuestion";
+import React from "react";
+import {InterviewQuestionPaged} from "../models/InterviewQuestion";
 import InfiniteScroll from "react-infinite-scroll-component";
-import {clearInterviewQuestions} from "../features/interviewQuestions/interviewQuestionsSlice";
 
 const useStyles = makeStyles((theme) => ({
     heading: {
@@ -47,62 +43,19 @@ const useStyles = makeStyles((theme) => ({
         padding: '0 1em'
     }
 }));
+type Props = { list: InterviewQuestionPaged, onPageChange: any, page: number };
 
-export const InterviewQuestionList: React.FC = () => {
+export const InterviewQuestionList: React.FC<Props> = (props) => {
 
     const classes = useStyles();
-    const dispatch = useDispatch();
-    const interviewQuestions = useNamedSelector('interviewQuestions')
-    const tagSelector = useNamedSelector('tagsSelector')
-    const search = useNamedSelector('search')
-
-    const [page, setPage] = useState(1)
-
-    useEffect(() => {
-            const filter: InterviewQuestionListDto = {
-                Filters: [],
-                Paging: {
-                    Page: page,
-                    Count: 20
-                }
-            }
-            if (tagSelector?.data?.length != 0) {
-                filter.Filters = [...filter.Filters,
-                    {
-                        field: "tags.tagId",
-                        operation: "equal",
-                        values: [...tagSelector?.data?.map(p => p.id)]
-                    }
-                ]
-            }
-            if (search?.text.length) {
-                filter.Filters = [...filter.Filters,
-                    {
-                        field: "fulltext",
-                        operation: "contains",
-                        values: [search.text]
-                    }
-                ]
-            }
-            dispatch(thunkGetInterviewQuestions(filter))
-        },
-        [dispatch, tagSelector, page, search]
-    )
-
-    useEffect(() => {
-        dispatch(clearInterviewQuestions())
-        setPage(1)
-    }, [tagSelector, search])
 
     return (
         <Grid container style={{justifyContent: 'center'}}>
             <div style={{flexBasis: '100%'}}>
                 <InfiniteScroll
-                    dataLength={interviewQuestions.data.length}
-                    next={() => {
-                        setPage(page + 1)
-                    }}
-                    hasMore={page !== interviewQuestions.totalPage}
+                    dataLength={props.list.data.length}
+                    next={props.onPageChange}
+                    hasMore={props.page !== props.list.totalPage}
                     loader={<h4>Loading...</h4>}
                     endMessage={
                         <p style={{textAlign: "center"}}>
@@ -112,7 +65,7 @@ export const InterviewQuestionList: React.FC = () => {
                     className={classes.infinityScroll}
                 >
                     {
-                        interviewQuestions?.data?.map(({id, question, answer, tags}) => {
+                        props.list?.data?.map(({id, question, answer, tags}) => {
                             return (
                                 <Grid item xs={12} key={id}>
                                     <div className={classes.containerItem}>
@@ -136,7 +89,6 @@ export const InterviewQuestionList: React.FC = () => {
                     }
                 </InfiniteScroll>
             </div>
-
         </Grid>
     );
 }
