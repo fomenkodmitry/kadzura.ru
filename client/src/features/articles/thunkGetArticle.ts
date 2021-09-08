@@ -1,5 +1,5 @@
 ﻿import {RestService} from "../../utils/rest";
-import {setArticle} from "./articleSlice";
+import {setArticle} from "./articlesSlice";
 import {AppThunk} from "../../utils/redux";
 import {ArticleListDto, ArticlePaged} from "../../models/Article";
 

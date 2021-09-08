@@ -2,14 +2,14 @@
 import {ArticleList} from "../components/ArticleList";
 import {useNamedSelector} from "../hooks/useNamedSelector";
 import {InterviewQuestionListDto} from "../models/InterviewQuestion";
-import {thunkGetArticle} from "../features/articles/thunkGetIArticle";
-import {clearArticle} from "../features/articles/articleSlice";
+import {thunkGetArticle} from "../features/articles/thunkGetArticle";
+import {clearArticle} from "../features/articles/articlesSlice";
 import {useDispatch} from "react-redux";
 
 export const Articles: FC = () => {
   
     const dispatch = useDispatch();
-    const article = useNamedSelector('article')
+    const articles = useNamedSelector('articles')
     const tagSelector = useNamedSelector('tagsSelector')
     const search = useNamedSelector('search')
     
@@ -55,6 +55,6 @@ export const Articles: FC = () => {
     }, [tagSelector, search])
     
     return (
-        <ArticleList list={article} page={page} onPageChange={onPageChange}/>
+        <ArticleList list={articles} page={page} onPageChange={onPageChange}/>
     );
 }

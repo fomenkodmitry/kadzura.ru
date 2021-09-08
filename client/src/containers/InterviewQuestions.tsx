@@ -19,7 +19,6 @@ export const InterviewQuestions: React.FC = () => {
     }
     
     useEffect(() => {
-            console.log("page", page)
             const filter: InterviewQuestionListDto = {
                 Filters: [],
                 Paging: {

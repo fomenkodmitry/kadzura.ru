@@ -1,31 +1,23 @@
 ﻿import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {ArticlePaged} from "../../models/Article";
+import {Article, ArticlePaged} from "../../models/Article";
+import {Tag} from "../../models/Tag";
 
-const initialState: ArticlePaged = {
-    data: [],
-    totalCount: 0,
-    totalPage: 1
-};
+type State = {
+    data : Article
+}
+const initialState: State = {} as State;
 
 const articleSlice = createSlice({
     name: 'article',
     initialState,
     reducers: {
-        setArticle(state, {payload}: PayloadAction<ArticlePaged>) {
-            state.data = [...state.data, ...payload.data];
-            state.totalCount = payload.totalCount;
-            state.totalPage = payload.totalPage
-        },
-        clearArticle(state) {
-            state.data = []
-            state.totalCount = 0
-            state.totalPage = 1
+        setArticle(state, {payload}: PayloadAction<Article>) {
+            state.data = payload
         },
     },
 });
 export const {
     setArticle,
-    clearArticle
 } = articleSlice.actions;
 
 export default articleSlice.reducer;
