@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-type Props = { handleChange: any };
+type Props = { handleChange: any, search: string | null | undefined};
 
 export const Search : React.FC<Props> = (props)  => {
 
@@ -65,6 +65,7 @@ export const Search : React.FC<Props> = (props)  => {
                 }}
                 inputProps={{'aria-label': 'search'}}
                 onChange={props.handleChange}
+                defaultValue={props.search}
             />
         </div>
     )

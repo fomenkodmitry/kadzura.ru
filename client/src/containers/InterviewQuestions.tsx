@@ -5,6 +5,7 @@ import {useDispatch} from "react-redux";
 import {useNamedSelector} from "../hooks/useNamedSelector";
 import {InterviewQuestionListDto} from "../models/InterviewQuestion";
 import {thunkGetInterviewQuestions} from "../features/interviewQuestions/thunkGetInterviewQuestions";
+import {setIsShowFilters} from "../features/layout/layoutSlice";
 
 export const InterviewQuestions: React.FC = () => {
 
@@ -35,7 +36,7 @@ export const InterviewQuestions: React.FC = () => {
                     }
                 ]
             }
-            if (search?.text.length) {
+            if (search.text?.length) {
                 filter.Filters = [...filter.Filters,
                     {
                         field: "fulltext",
@@ -51,9 +52,10 @@ export const InterviewQuestions: React.FC = () => {
 
     useEffect(() => {
         dispatch(clearInterviewQuestions())
+        dispatch(setIsShowFilters({isShowFilters: true}))
         setPage(1)
     }, [tagSelector, search])
-    
+
     return (
         <InterviewQuestionList list={interviewQuestions} onPageChange={onPageChange} page={page}/>
     );

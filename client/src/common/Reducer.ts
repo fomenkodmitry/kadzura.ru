@@ -6,6 +6,7 @@ import tagsSelector from "../features/tagSelector/tagSelectorSlice";
 import search from "../features/search/searchSlice";
 import articles from "../features/articles/articlesSlice";
 import article from "../features/articles/articleSlice";
+import layout from "../features/layout/layoutSlice";
 
 const reducer = combineReducers({
     interviewQuestions,
@@ -14,7 +15,8 @@ const reducer = combineReducers({
     tagsSelector,
     search,
     articles,
-    article
+    article,
+    layout
 });
 
 export type ReduxState = ReturnType<typeof reducer>;

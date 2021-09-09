@@ -10,6 +10,8 @@ namespace Database.Models
 
         [Filters("fulltext", FilterOperationsType.String)]
         public string FullText { get; set; }
+        
+        [Filters("tags")]
         public ICollection<ArticleToTagsModel> Tags { get; set; }
     }
 }

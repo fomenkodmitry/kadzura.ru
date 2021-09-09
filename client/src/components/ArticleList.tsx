@@ -59,7 +59,7 @@ export const ArticleList: React.FC<Props> = (props) => {
                     props.list?.data?.map(({id, title, text, tags}) => {
                         return (
                             <>
-                                <ListItem className={classes.listItem} alignItems="center">
+                                <ListItem className={classes.listItem} alignItems="center" key={id}>
                                     <ListItemText
                                         primary={title}
                                         primaryTypographyProps={{variant: "h4"}}

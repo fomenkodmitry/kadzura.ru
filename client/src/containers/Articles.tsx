@@ -5,6 +5,7 @@ import {InterviewQuestionListDto} from "../models/InterviewQuestion";
 import {thunkGetArticle} from "../features/articles/thunkGetArticle";
 import {clearArticle} from "../features/articles/articlesSlice";
 import {useDispatch} from "react-redux";
+import {setIsShowFilters} from "../features/layout/layoutSlice";
 
 export const Articles: FC = () => {
   
@@ -35,7 +36,7 @@ export const Articles: FC = () => {
                     }
                 ]
             }
-            if (search?.text.length) {
+            if (search?.text?.length) {
                 filter.Filters = [...filter.Filters,
                     {
                         field: "fulltext",
@@ -45,6 +46,7 @@ export const Articles: FC = () => {
                 ]
             }
             dispatch(thunkGetArticle(filter))
+            dispatch(setIsShowFilters({isShowFilters: true}))
         },
         [dispatch, tagSelector, page, search]
     )

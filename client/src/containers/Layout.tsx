@@ -1,4 +1,4 @@
-﻿import React, {FC} from 'react';
+﻿import React, {FC, useEffect} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import IconButton from '@material-ui/core/IconButton';
@@ -9,7 +9,8 @@ import {useDispatch} from "react-redux";
 import {changeNavbarMobileIsOpen} from "../features/mobile/navbarMobileIsOpenSlice";
 import {TagMenu} from "./TagMenu";
 import {SearchBar} from "./SearchBar";
-import {Navbar} from "../components/Navbar";
+import {Navbar} from "./Navbar";
+import {useNamedSelector} from "../hooks/useNamedSelector";
 
 const drawerWidth = 240;
 
@@ -53,6 +54,8 @@ const useStyles = makeStyles((theme: Theme) =>
 const Layout: FC = ({children}) => {
     const classes = useStyles();
 
+    const layout = useNamedSelector('layout')
+
     const dispatch = useDispatch();
 
     const changeMobileOpen = () => {
@@ -66,17 +69,22 @@ const Layout: FC = ({children}) => {
                 <Toolbar>
                     <IconButton
                         color="inherit"
-                        aria-label="open drawer"
                         edge="start"
                         onClick={changeMobileOpen}
                         className={classes.menuButton}
                     >
                         <MenuIcon/>
                     </IconButton>
-                    <div className={classes.filters}>
-                        <SearchBar/>
-                        <TagMenu/>
-                    </div>
+                    {
+                        layout.isShowFilters 
+                            ?
+                            <div className={classes.filters}>
+                                <SearchBar/>
+                                <TagMenu/>
+                            </div>
+                            :
+                            null
+                    }
                 </Toolbar>
             </AppBar>
             <Navbar/>

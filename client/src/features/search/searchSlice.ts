@@ -1,8 +1,10 @@
 ﻿import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {Search} from "../../models/Search";
 
+const params = new URLSearchParams(window.location.search)
+
 const initialState: Search = {
-    text: ""
+    text: params.get("q")
 };
 
 const searchSlice = createSlice({
@@ -12,10 +14,14 @@ const searchSlice = createSlice({
         setSearch(state, {payload}: PayloadAction<Search>) {
             state.text = payload.text;
         },
+        clearSearch(state) {
+            state.text = undefined;
+        },
     },
 });
 export const {
-    setSearch
+    setSearch,
+    clearSearch
 } = searchSlice.actions;
 
 export default searchSlice.reducer;

@@ -75,10 +75,14 @@ export const Navbar: FC = () => {
         dispatch(changeNavbarMobileIsOpen())
     };
     const {isOpen} = useNamedSelector('navbarMobileIsOpen')
+    const params = new URLSearchParams(window.location.search)
 
     const history = useHistory();
     const toLink = (link: string) => {
-        history.push(link);
+        history.push({
+            pathname: link,
+            search: params.toString()
+        });
     };
 
     const drawer = (

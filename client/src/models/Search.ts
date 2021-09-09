@@ -1,5 +1,5 @@
 ﻿type Search = {
-    text: string;
+    text: string | null |undefined;
 };
 
 export type {Search}
