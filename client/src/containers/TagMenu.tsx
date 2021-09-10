@@ -8,6 +8,8 @@ import {useNamedSelector} from "../hooks/useNamedSelector";
 import {thunkGetTags} from "../features/tags/thunkGetTags";
 import {SelectorTag} from "../models/Tag";
 import {setSelectorTags} from "../features/tagSelector/tagSelectorSlice";
+import {setSearch} from "../features/search/searchSlice";
+import {useHistory} from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -41,16 +43,24 @@ export const TagMenu : React.FC = () => {
         [dispatch]
     )
 
+    const history = useHistory();
     const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+        const params = new URLSearchParams(window.location.search)
+
         const { options } = event.target as HTMLSelectElement;
         const value: SelectorTag = {
             data: []
         };
         for (let i = 0, l = options.length; i < l; i += 1) {
             if (options[i].selected) {
-                value.data.push(...tags.data.filter(p => p.id.toString() == options[i].value));
+                value.data.push(...tags.data.map(p => p.id.toString()).filter(p => p.toString() == options[i].value));
             }
         }
+        params.delete("tags")
+        if(value.data.length > 0)
+            params.append("tags", value.data.join(","))
+
+        history.push({search: params.toString()})
         dispatch(setSelectorTags(value))
     };
     

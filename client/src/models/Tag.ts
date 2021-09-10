@@ -12,7 +12,7 @@ type Tag = {
 type TagPaged = PagedData<TagValue>;
 
 type SelectorTag = {
-    data: TagValue[]
+    data: string[]
 };
 
 export type  {Tag, TagValue, TagPaged, SelectorTag}

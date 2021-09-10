@@ -9,7 +9,7 @@ export const TagMenuList: React.FC<Props> = (props) => {
         <Select
             multiple
             native
-            value={props.tagSelector.data.map(p => p.id.toString())}
+            value={props.tagSelector.data}
             onChange={props.handleChange}
             inputProps={{
                 id: 'select-multiple-native',

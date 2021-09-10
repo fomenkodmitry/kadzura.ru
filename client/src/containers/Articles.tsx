@@ -32,7 +32,7 @@ export const Articles: FC = () => {
                     {
                         field: "tags.tagId",
                         operation: "equal",
-                        values: [...tagSelector?.data?.map(p => p.id)]
+                        values: [...tagSelector?.data]
                     }
                 ]
             }
