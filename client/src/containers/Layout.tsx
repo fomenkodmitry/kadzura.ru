@@ -1,4 +1,4 @@
-﻿import React, {FC, useEffect} from 'react';
+﻿import React, {FC} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import IconButton from '@material-ui/core/IconButton';
@@ -11,6 +11,8 @@ import {TagMenu} from "./TagMenu";
 import {SearchBar} from "./SearchBar";
 import {Navbar} from "./Navbar";
 import {useNamedSelector} from "../hooks/useNamedSelector";
+import {Button} from "@material-ui/core";
+import {useHistory} from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -48,6 +50,9 @@ const useStyles = makeStyles((theme: Theme) =>
             padding: theme.spacing(0),
         },
         toolbar: theme.mixins.toolbar,
+        backButton: {
+            color: '#FFFFFF'
+        }
     }),
 );
 
@@ -61,6 +66,7 @@ const Layout: FC = ({children}) => {
     const changeMobileOpen = () => {
         dispatch(changeNavbarMobileIsOpen())
     };
+    const history = useHistory();
 
     return (
         <div className={classes.root}>
@@ -75,16 +81,18 @@ const Layout: FC = ({children}) => {
                     >
                         <MenuIcon/>
                     </IconButton>
-                    {
-                        layout.isShowFilters 
-                            ?
-                            <div className={classes.filters}>
-                                <SearchBar/>
-                                <TagMenu/>
-                            </div>
-                            :
-                            null
-                    }
+                    <div className={classes.filters}>
+                        {
+                            layout.isShowFilters
+                                ?
+                                <>
+                                    <SearchBar/>
+                                    <TagMenu/>
+                                </>
+                                :
+                                <Button className={classes.backButton} onClick={() => history.goBack()}>НАЗАД</Button>
+                        }
+                    </div>
                 </Toolbar>
             </AppBar>
             <Navbar/>

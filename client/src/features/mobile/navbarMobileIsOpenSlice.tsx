@@ -9,7 +9,7 @@ const navbarMobileIsOpenSlice = createSlice({
     name: 'navbarMobileIsOpen',
     initialState,
     reducers: {
-        changeNavbarMobileIsOpen(state,) {
+        changeNavbarMobileIsOpen(state) {
             state.isOpen = !state.isOpen;
         },
         setNavbarMobileIsOpen(state, {payload}: PayloadAction<Mobile>) {

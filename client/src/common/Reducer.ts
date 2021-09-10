@@ -7,6 +7,7 @@ import search from "../features/search/searchSlice";
 import articles from "../features/articles/articlesSlice";
 import article from "../features/articles/articleSlice";
 import layout from "../features/layout/layoutSlice";
+import login from "../features/login/loginSlice";
 
 const reducer = combineReducers({
     interviewQuestions,
@@ -16,7 +17,8 @@ const reducer = combineReducers({
     search,
     articles,
     article,
-    layout
+    layout,
+    login
 });
 
 export type ReduxState = ReturnType<typeof reducer>;

@@ -1,8 +1,11 @@
-﻿import React from 'react';
+﻿import React, {useEffect} from 'react';
 import {useFormik} from 'formik';
 import * as yup from 'yup';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import {useDispatch} from "react-redux";
+import {thunkLogin} from "../features/login/thunkLogin";
+import {useNamedSelector} from "../hooks/useNamedSelector";
 
 
 const validationSchema = yup.object({
@@ -15,16 +18,27 @@ const validationSchema = yup.object({
         .required('Password is required'),
 });
 
-export const LoginFom = () => {
+export const LoginForm = () => {
 
+    const dispatch = useDispatch();
+    const isLogin = useNamedSelector('login');
+
+    useEffect(() => {
+        if (isLogin.isAuth)
+            alert("Success")
+    }, [isLogin])
+    
     const formik = useFormik({
         initialValues: {
-            email: 'foobar@example.com',
-            password: 'foobar',
+            email: '',
+            password: '',
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
-            alert(JSON.stringify(values, null, 2));
+            dispatch(thunkLogin({
+                login: values.email,
+                password: values.password
+            }))
         },
     });
 

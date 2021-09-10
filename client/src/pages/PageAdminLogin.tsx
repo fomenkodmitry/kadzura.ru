@@ -9,7 +9,6 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const PageAdminLogin: FC = () => {
-    const classes = useStyles();
     useTitle('Авторизация админа')
 
     return (
