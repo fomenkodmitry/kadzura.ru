@@ -8,7 +8,6 @@ import {InputLabel, Paper, Select, Typography} from "@material-ui/core";
 import {useDispatch} from "react-redux";
 import {useNamedSelector} from "../hooks/useNamedSelector";
 import {thunkGetTags} from "../features/tags/thunkGetTags";
-import {thunkCreateInterviewQuestion} from "../features/interviewQuestions/thunkCreateInterviewQuestion";
 import {TagDto} from "../models/Tag";
 import {thunkCreateArticle} from "../features/articles/thunkCreateArticle";
 
