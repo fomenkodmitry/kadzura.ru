@@ -30,6 +30,7 @@ namespace Host.Controllers
         [ApiVersionRange(1)]
         public async Task<IActionResult> Create([FromBody] InterviewQuestionModel requestDto)
         {
+            requestDto.FullText = requestDto.Answer + " " + requestDto.Question;
             return Ok(await _interviewQuestionService.Create(requestDto));
         }
         

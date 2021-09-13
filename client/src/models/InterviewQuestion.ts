@@ -1,4 +1,4 @@
-﻿import {Tag} from "./Tag";
+﻿import {Tag, TagDto} from "./Tag";
 import {PagedData} from "./PagedData";
 import {Paging} from "./Paging";
 import {Filters} from "./Filters";
@@ -18,4 +18,10 @@ type InterviewQuestionListDto = {
     Filters: Filters
 }
 
-export type  {InterviewQuestion, InterviewQuestionPaged, InterviewQuestionListDto};
+type InterviewQuestionCreate = {
+    question: string;
+    answer: string;
+    tags: TagDto[];
+}
+
+export type  {InterviewQuestion, InterviewQuestionPaged, InterviewQuestionListDto, InterviewQuestionCreate};

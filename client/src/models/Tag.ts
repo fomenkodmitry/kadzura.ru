@@ -15,4 +15,10 @@ type SelectorTag = {
     data: string[]
 };
 
-export type  {Tag, TagValue, TagPaged, SelectorTag}
+type TagCreate = {
+    name: string
+}
+type TagDto = {
+    tagId: string
+}
+export type  {Tag, TagValue, TagPaged, SelectorTag, TagCreate, TagDto}

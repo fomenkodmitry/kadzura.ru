@@ -24,7 +24,7 @@ export const LoginForm = () => {
     const isLogin = useNamedSelector('login');
 
     useEffect(() => {
-        if (isLogin.isAuth)
+        if (isLogin.isLogin)
             alert("Success")
     }, [isLogin])
     

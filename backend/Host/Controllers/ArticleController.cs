@@ -30,6 +30,7 @@ namespace Host.Controllers
         [ApiVersionRange(1)]
         public async Task<ActionResult<ArticleModel>> Create([FromBody] ArticleModel requestDto)
         {
+            requestDto.FullText = requestDto.Title + " " + requestDto.Text;
             return Ok(await _articleService.Create(requestDto));
         }
         

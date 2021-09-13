@@ -1,16 +1,16 @@
 ﻿import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {Auth} from "../../models/Login";
 
-type Auth = {
-    isAuth : boolean
-}
-const initialState: Auth = {} as Auth;
+const initialState: Auth = {
+    isLogin: !!localStorage.getItem('token')
+};
 
 const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
         setIsAuth(state, {payload}: PayloadAction<boolean>) {
-            state.isAuth = payload
+            state.isLogin = payload
         },
     },
 });

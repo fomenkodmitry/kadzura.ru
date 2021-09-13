@@ -46,7 +46,7 @@ const ROUTES: Route[] = [
     },
     {
         id: 7,
-        path: '/admin/tag',
+        path: '/admin/tag/create',
         page: PageAdminTagCreate,
         withLayout: false
     },

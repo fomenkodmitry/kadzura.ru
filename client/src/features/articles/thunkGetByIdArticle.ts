@@ -5,7 +5,7 @@ import {ArticlePaged} from "../../models/Article";
 
 export function thunkGetByIdArticle(articleId: string): AppThunk {
     return async (dispatch) => {
-        const result = await RestService
+        await RestService
             .GetInstance
             .GET<ArticlePaged>(
                 `/api/v1/article?Paging.Page=1&Paging.Count=1&Filters=[{
@@ -13,8 +13,8 @@ export function thunkGetByIdArticle(articleId: string): AppThunk {
                         operation: "equal",
                         values: [${articleId}]
                     }]`
-            );
-        dispatch(setArticle(result?.data?.[0]))
+            )
+            .then(p => dispatch(setArticle(p?.data?.[0])))
+            .catch(p => alert(p));
     }
 }
-

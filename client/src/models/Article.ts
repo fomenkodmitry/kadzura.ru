@@ -1,4 +1,4 @@
-﻿import {Tag} from "./Tag";
+﻿import {Tag, TagDto} from "./Tag";
 import {PagedData} from "./PagedData";
 import {Paging} from "./Paging";
 import {Filters} from "./Filters";
@@ -18,4 +18,10 @@ type ArticleListDto = {
     Filters: Filters
 }
 
-export type { Article, ArticlePaged, ArticleListDto };
+type ArticleCreate = {
+    title: string;
+    text: string;
+    tags: TagDto[];
+}
+
+export type { Article, ArticlePaged, ArticleListDto, ArticleCreate };

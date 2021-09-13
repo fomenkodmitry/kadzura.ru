@@ -1,10 +1,16 @@
-﻿import React, {useState} from 'react';
+﻿import React, {useEffect, useState} from 'react';
 import {useFormik} from 'formik';
 import * as yup from 'yup';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
 import {InputLabel, Paper, Select, Typography} from "@material-ui/core";
+import {useDispatch} from "react-redux";
+import {useNamedSelector} from "../hooks/useNamedSelector";
+import {thunkGetTags} from "../features/tags/thunkGetTags";
+import {thunkCreateInterviewQuestion} from "../features/interviewQuestions/thunkCreateInterviewQuestion";
+import {TagDto} from "../models/Tag";
+import {thunkCreateArticle} from "../features/articles/thunkCreateArticle";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -22,34 +28,40 @@ const validationSchema = yup.object({
     text: yup
         .string()
         .required('Text is required'),
+    tags: yup
+        .array()
+        .min(1, 'Tags is required')
+        .required('Tags is required')
 });
 
-const names = [
-    'Oliver Hansen',
-    'Van Henry',
-    'April Tucker',
-    'Ralph Hubbard',
-    'Omar Alexander',
-    'Carlos Abbott',
-    'Miriam Wagner',
-    'Bradley Wilkerson',
-    'Virginia Andrews',
-    'Kelly Snyder',
-];
 export const ArticleCreateForm = () => {
 
+    const dispatch = useDispatch();
+    const tags = useNamedSelector('tags')
+
+    useEffect(() => {
+        dispatch(thunkGetTags())
+    }, [dispatch])
+    
     const [value, setValue] = useState("");
 
     const classes = useStyles();
 
     const formik = useFormik({
         initialValues: {
-            title: undefined,
-            text: undefined,
+            title: "",
+            text: "",
+            tags: []
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
-            alert(JSON.stringify(values, null, 2));
+            dispatch(thunkCreateArticle(
+                {
+                    title: values.title,
+                    text: values.text,
+                    tags: values.tags.map(p => { return {tagId: p} as TagDto})
+                }
+            ))
         },
     });
 
@@ -94,8 +106,8 @@ export const ArticleCreateForm = () => {
                 }}
                 {...formik.getFieldProps("tags")}
             >
-                {names.map((name) => (
-                    <option key={name} value={name}>
+                {tags.data.map(({id, name}) => (
+                    <option key={id} value={id}>
                         {name}
                     </option>
                 ))}
