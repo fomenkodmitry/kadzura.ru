@@ -37,11 +37,12 @@ export const InterviewQuestionCreateForm = () => {
 
     const dispatch = useDispatch();
     const tags = useNamedSelector('tags')
+    const isLogin = useNamedSelector('login');
 
     useEffect(() => {
         dispatch(thunkGetTags())
     }, [dispatch])
-    
+
     const [value, setValue] = useState("");
     const classes = useStyles();
 
@@ -57,68 +58,74 @@ export const InterviewQuestionCreateForm = () => {
                 {
                     question: values.question,
                     answer: values.answer,
-                    tags: values.tags.map(p => { return {tagId: p} as TagDto})
+                    tags: values.tags.map(p => {
+                        return {tagId: p} as TagDto
+                    })
                 }
             ))
         },
     });
 
     return (
-        <form onSubmit={formik.handleSubmit}>
-            <TextField
-                fullWidth
-                id="question"
-                name="question"
-                label="Заголовок"
-                value={formik.values.question}
-                onChange={formik.handleChange}
-                error={formik.touched.question && Boolean(formik.errors.question)}
-                helperText={formik.touched.question && formik.errors.question}
-            />
-            <TextField
-                fullWidth
-                multiline
-                rows={10}
-                id="answer"
-                name="answer"
-                label="Текст"
-                type="answer"
-                value={formik.values.answer}
-                onChange={(event) => {
-                    setValue(event.target.value)
-                    formik.handleChange(event)
-                }}
-                error={formik.touched.answer && Boolean(formik.errors.answer)}
-                helperText={formik.touched.answer && formik.errors.answer}
-            />
-            <InputLabel shrink htmlFor="select-multiple-native">
-                Теги
-            </InputLabel>
-            <Select
-                id="tags"
-                multiple
-                fullWidth
-                native
-                inputProps={{
-                    id: 'select-multiple-native',
-                }}
-                {...formik.getFieldProps("tags")}
-            >
-                {tags.data.map(({id, name}) => (
-                    <option key={id} value={id}>
-                        {name}
-                    </option>
-                ))}
-            </Select>
-            <Paper className={classes.prerender}>
-                <div>
-                    <Typography>Prerender:</Typography>
-                    <div dangerouslySetInnerHTML={{__html: value}}/>
-                </div>
-            </Paper>
-            <Button color="primary" variant="contained" fullWidth type="submit">
-                Создать
-            </Button>
-        </form>
+        isLogin.isLogin
+            ?
+            <form onSubmit={formik.handleSubmit}>
+                <TextField
+                    fullWidth
+                    id="question"
+                    name="question"
+                    label="Заголовок"
+                    value={formik.values.question}
+                    onChange={formik.handleChange}
+                    error={formik.touched.question && Boolean(formik.errors.question)}
+                    helperText={formik.touched.question && formik.errors.question}
+                />
+                <TextField
+                    fullWidth
+                    multiline
+                    rows={10}
+                    id="answer"
+                    name="answer"
+                    label="Текст"
+                    type="answer"
+                    value={formik.values.answer}
+                    onChange={(event) => {
+                        setValue(event.target.value)
+                        formik.handleChange(event)
+                    }}
+                    error={formik.touched.answer && Boolean(formik.errors.answer)}
+                    helperText={formik.touched.answer && formik.errors.answer}
+                />
+                <InputLabel shrink htmlFor="select-multiple-native">
+                    Теги
+                </InputLabel>
+                <Select
+                    id="tags"
+                    multiple
+                    fullWidth
+                    native
+                    inputProps={{
+                        id: 'select-multiple-native',
+                    }}
+                    {...formik.getFieldProps("tags")}
+                >
+                    {tags.data.map(({id, name}) => (
+                        <option key={id} value={id}>
+                            {name}
+                        </option>
+                    ))}
+                </Select>
+                <Paper className={classes.prerender}>
+                    <div>
+                        <Typography>Prerender:</Typography>
+                        <div dangerouslySetInnerHTML={{__html: value}}/>
+                    </div>
+                </Paper>
+                <Button color="primary" variant="contained" fullWidth type="submit">
+                    Создать
+                </Button>
+            </form>
+            :
+            <>Access denied</>
     );
 };
