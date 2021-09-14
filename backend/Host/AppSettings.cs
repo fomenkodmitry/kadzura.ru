@@ -9,8 +9,6 @@ namespace Host
 
         public bool ApplyMigrationsOnStartup { get; set; }
 
-        public RedisCacheOptions RedisConfig { get; set; }
-        
         public AuthConfigBase AuthConfig { get; set; }
 
     }

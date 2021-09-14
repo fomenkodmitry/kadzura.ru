@@ -3,6 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Common.Configuration;
 using Core.Helpers;
 using Core.Models.Auth;
 using Core.Services.Contracts;
@@ -16,23 +17,23 @@ namespace Core.Services
 {
     public class AuthService : IAuthService
     {
-        private readonly IOptions<AuthConfigBase> _options;
-        private readonly IAdminRepository _adminRepository;
-        public AuthService(IOptions<AuthConfigBase> options, IAdminRepository adminRepository)
+        private readonly IOptions<AuthConfigBase> _authConfig;
+        private readonly IOptions<UserAdminConfig> _userAdminConfig;
+        public AuthService(IOptions<AuthConfigBase> options, IOptions<UserAdminConfig> userAdminConfig)
         {
-            _options = options;
-            _adminRepository = adminRepository;
+            _authConfig = options;
+            _userAdminConfig = userAdminConfig;
         }
 
         public async Task<AuthResponseDto> Login(AuthRequestDto data)
         {
-            var admin = await _adminRepository.GetByLoginPassword(data.Login, CryptoHelper.GetMd5Hash(data.Password));
-            if (admin == null)
+            var admin = (data.Login == _userAdminConfig.Value.Login && CryptoHelper.GetMd5Hash(data.Password) == _userAdminConfig.Value.Password);
+            if (!admin)
                 throw new AuthorizationException("Неверный логин или пароль");
 
             return new AuthResponseDto()
             {
-                AuthToken = GenerateToken(admin.AdminGuid, _options.Value.Secret)
+                AuthToken = GenerateToken(data.Login, _authConfig.Value.Secret)
             };
         }
         

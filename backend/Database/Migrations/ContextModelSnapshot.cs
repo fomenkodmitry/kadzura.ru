@@ -15,29 +15,6 @@ namespace Database.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.8");
 
-            modelBuilder.Entity("Database.Models.AdminModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("AdminGuid")
-                        .HasColumnType("TEXT");
-
-                    b.Property<long>("DateCreation")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Login")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Admins");
-                });
-
             modelBuilder.Entity("Database.Models.ArticleModel", b =>
                 {
                     b.Property<int>("Id")

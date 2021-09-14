@@ -10,7 +10,6 @@ namespace Database
 {
     public class Context : DbContext
     {
-        public DbSet<AdminModel> Admins { get; set; }
         public DbSet<TagModel> Tags { get; set; }
         public DbSet<ArticleModel> Articles { get; set; }
         public DbSet<InterviewQuestionModel> InterviewQuestions { get; set; }
