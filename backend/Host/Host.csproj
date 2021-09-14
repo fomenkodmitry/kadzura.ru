@@ -22,7 +22,7 @@
         <PackageReference Include="Kadzura.Extensions.Filtration.Binder" Version="1.0.3" />
         <PackageReference Include="Kadzura.Extensions.Filtration.EntityFramework" Version="1.0.4" />
         <PackageReference Include="Kadzura.Extensions.Pagination" Version="1.0.5" />
-        <PackageReference Include="Kadzura.Extensions.Pagination.EntityFramework" Version="1.0.8" />
+        <PackageReference Include="Kadzura.Extensions.Pagination.EntityFramework" Version="1.0.9" />
         <PackageReference Include="Kadzura.FileManager" Version="1.0.1" />
         <PackageReference Include="Kadzura.NLog.Configuration" Version="1.0.0" />
         <PackageReference Include="Kadzura.Swagger.Extensions" Version="1.0.1" />
