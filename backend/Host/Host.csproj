@@ -3,7 +3,6 @@
     <PropertyGroup>
         <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
         <LangVersion>latestmajor</LangVersion>
-        <OutputType>Library</OutputType>
         <TargetFramework>net5.0</TargetFramework>
     </PropertyGroup>
 
