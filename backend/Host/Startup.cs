@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Common;
 using Kadzura.Extensions.Filtration;
 using Kadzura.Web.Extensions.Extensions;
+using Microsoft.Extensions.Hosting;
 
 namespace Host
 {
@@ -57,7 +58,7 @@ namespace Host
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApiVersionDescriptionProvider provider)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)
         {
             app.UseCors(x => x
                 .SetIsOriginAllowed(p => true)
