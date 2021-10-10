@@ -21,11 +21,10 @@ export const SearchBar : React.FC = () => {
             params.delete("q")
             dispatch(clearSearch());
         } else {
-            params.append("q", event.target.value)
+            params.set("q", event.target.value)
             dispatch(setSearch({text: event.target.value}))
         }
         history.push({search: params.toString()})
-
     }, 300);
     
     return (
