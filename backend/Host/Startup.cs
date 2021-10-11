@@ -40,8 +40,7 @@ namespace Host
             
             BindConfiguration(services, _appSettings);
 
-            services.AddHealthChecks()
-                .AddNpgSql(_appSettings.SqlConnectionString);
+            services.AddHealthChecks();
 
             AddInjectionService(services, _appSettings);
 

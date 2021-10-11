@@ -1,4 +1,6 @@
-﻿using Core.Services;
+﻿using System;
+using System.IO;
+using Core.Services;
 using Core.Services.Contracts;
 using Database;
 using Database.Repository;
@@ -54,7 +56,7 @@ namespace Host
         private void AddDatabases(IServiceCollection services, AppSettings appSettings)
         {
             services.AddDbContext<Context>(options =>
-                options.UseSqlite(appSettings.SqlConnectionString));
+                options.UseSqlite("Data Source="+Path.Combine(Environment.CurrentDirectory, appSettings.SqlConnectionString)));
         }
 
         private void AddRepository(IServiceCollection services, AppSettings appSettings)
