@@ -14,8 +14,6 @@
 
     <ItemGroup>
         <PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="5.0.2" />
-        <PackageReference Include="AspNetCore.HealthChecks.Rabbitmq" Version="3.1.2" />
-        <PackageReference Include="AspNetCore.HealthChecks.SqlServer" Version="3.1.1" />
         <PackageReference Include="Kadzura.Auth.Extensions" Version="1.0.5" />
         <PackageReference Include="Kadzura.Extensions.Filtration" Version="1.0.3" />
         <PackageReference Include="Kadzura.Extensions.Filtration.Binder" Version="1.0.3" />
@@ -37,7 +35,6 @@
         <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3" />
         <PackageReference Include="NLog" Version="4.7.2" />
         <PackageReference Include="NLog.Web.AspNetCore" Version="4.9.2" />
-        <PackageReference Include="Scrutor" Version="3.2.1" />
     </ItemGroup>
 
     <ItemGroup>
