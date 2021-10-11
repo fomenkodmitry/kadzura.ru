@@ -261,6 +261,5 @@ __pycache__/
 *.pyc
 /run
 
-*.db
 *.db-*
 docs/
