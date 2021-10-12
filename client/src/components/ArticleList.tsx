@@ -75,6 +75,7 @@ export const ArticleList: React.FC<Props> = (props) => {
                                                     tags.map(p => p.tag.name).join(", ")
                                                 }</span>
                                                 <br/>
+                                                <br/>
                                                 {text.replace(/(<([^>]+)>)/gi, "").substring(0, 400)}
                                                 <br/>
                                                 <Button onClick={() => toLink("/article/" + id)}>
