@@ -3,9 +3,8 @@ using System.Threading.Tasks;
 using Core.Services.Contracts;
 using Database.Models;
 using Database.Repository.Contracts;
-using Kadzura.Extensions.Filtration.Models;
 using Kadzura.Extensions.Pagination.Models;
-using Kadzura.Extensions.Pagination.Models.Contracts;
+using Kadzura.Extensions.Pagination.Queries.Contracts;
 
 namespace Core.Services
 {
@@ -18,7 +17,7 @@ namespace Core.Services
             _interviewQuestionRepository = interviewQuestionRepository;
         }
 
-        public async Task<PagedData<InterviewQuestionModel>> GetList(IPagedQuery pagedQuery, IReadOnlyCollection<FilterContainer> filteredQuery)
+        public async Task<PagedData<InterviewQuestionModel>> GetList(IPagedQuery pagedQuery, string filteredQuery)
         {
             return await _interviewQuestionRepository.GetList(pagedQuery, filteredQuery);
         }

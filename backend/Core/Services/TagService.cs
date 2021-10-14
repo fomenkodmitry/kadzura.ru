@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Core.Services.Contracts;
 using Database.Models;
 using Database.Repository.Contracts;
-using Kadzura.Extensions.Filtration.Models;
 using Kadzura.Extensions.Pagination.Models;
-using Kadzura.Extensions.Pagination.Models.Contracts;
+using Kadzura.Extensions.Pagination.Queries.Contracts;
 
 namespace Core.Services
 {
@@ -18,7 +16,7 @@ namespace Core.Services
             _tagRepository = tagRepository;
         }
 
-        public async Task<PagedData<TagModel>> GetList(IPagedQuery pagedQuery, IReadOnlyCollection<FilterContainer> filteredQuery)
+        public async Task<PagedData<TagModel>> GetList(IPagedQuery pagedQuery, string filteredQuery)
         {
             return await _tagRepository.GetList(pagedQuery, filteredQuery);
         }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-using Kadzura.Extensions.Filtration.Models;
+using Kadzura.Extensions.Filtration.Attributes;
+using Kadzura.Extensions.Filtration.Enums;
 
 namespace Database.Models
 {
@@ -8,7 +9,7 @@ namespace Database.Models
         public string Question { get; set; }
         public string Answer { get; set; }
 
-        [Filters("fulltext", FilterOperationsType.String)]
+        [Filters("fulltext", FilterTypes.String)]
         public string FullText { get; set; }
 
         [Filters("tags")]

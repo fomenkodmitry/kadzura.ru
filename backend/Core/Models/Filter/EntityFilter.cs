@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
-using Kadzura.Extensions.Filtration.Models;
-using Kadzura.Extensions.Pagination.Models;
+﻿using Kadzura.Extensions.Pagination.Queries;
 
 namespace Core.Models.Filter
 {
     public class EntityFilter
     {
-        public IReadOnlyCollection<FilterContainer> Filters { get; set; }
+        public string Filters { get; set; }
         public PagedQuery Paging { get; set; }
     }
 }

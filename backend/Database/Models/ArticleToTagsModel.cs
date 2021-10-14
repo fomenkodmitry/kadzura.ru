@@ -1,4 +1,5 @@
-﻿using Kadzura.Extensions.Filtration.Models;
+﻿using Kadzura.Extensions.Filtration.Attributes;
+using Kadzura.Extensions.Filtration.Enums;
 
 namespace Database.Models
 {
@@ -6,7 +7,7 @@ namespace Database.Models
     {
         public int ArticleId { get; set; }
         public ArticleModel Article { get; set; }
-        [Filters("tagId", FilterOperationsType.Numeric)]
+        [Filters("tagId", FilterTypes.Numeric)]
         public int TagId { get; set; }
         public TagModel Tag { get; set; }
     }

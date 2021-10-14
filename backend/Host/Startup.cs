@@ -36,8 +36,6 @@ namespace Host
                 .AddAdditionalDefinition<ErrorCodes>(Common.Resources.Exceptions.ResourceManager)
                 .AddDefaultErrorResponseOptions(ro => ro.AddDefaultErrorResponse()));
 
-            services.AddSwaggerGen(o => o.ParameterFilter<FiltersSwaggerParamFilter>());
-            
             BindConfiguration(services, _appSettings);
 
             services.AddHealthChecks();
@@ -46,10 +44,7 @@ namespace Host
 
             services.AddCors();
             services.ConfigureAuth(_appSettings.AuthConfig)
-                .AddControllers(options =>
-                {
-                    options.ModelBinderProviders.Insert(0, new FiltersBinderProvider());
-                })  
+                .AddControllers()  
                 .AddNewtonsoftJson(options =>
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
                 );
