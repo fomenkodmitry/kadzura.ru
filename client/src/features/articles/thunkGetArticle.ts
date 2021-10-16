@@ -5,7 +5,7 @@ import {ArticleListDto, ArticlePaged} from "../../models/Article";
 
 export function thunkGetArticle(filter: ArticleListDto): AppThunk {
     return async (dispatch) => {
-        const filters = filter.Filters.length === 0 ? '[]' : JSON.stringify(filter.Filters)
+        const filters = JSON.stringify(filter.Filter)
         await RestService
             .GetInstance
             .GET<ArticlePaged>(

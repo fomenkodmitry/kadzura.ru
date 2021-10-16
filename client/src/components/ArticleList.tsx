@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-type Props = { list: ArticlePaged, onPageChange: any, page: number };
+type Props = { list: ArticlePaged, onPageChange: any, page: number, count: number };
 
 export const ArticleList: React.FC<Props> = (props) => {
     const classes = useStyles();
@@ -46,7 +46,7 @@ export const ArticleList: React.FC<Props> = (props) => {
             <InfiniteScroll
                 dataLength={props.list.data.length}
                 next={props.onPageChange}
-                hasMore={props.page !== props.list.totalPage}
+                hasMore={props.list.data.length == props.count}
                 loader={<h4>Loading...</h4>}
                 endMessage={
                     <p style={{textAlign: "center"}}>

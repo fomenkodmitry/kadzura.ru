@@ -1,7 +1,7 @@
 ﻿import {Tag, TagDto} from "./Tag";
 import {PagedData} from "./PagedData";
 import {Paging} from "./Paging";
-import {Filters} from "./Filters";
+import {Filter} from "./Filters";
 
 type Article = {
     id: string;
@@ -15,7 +15,7 @@ type ArticlePaged = PagedData<Article>;
 
 type ArticleListDto = {
     Paging: Paging
-    Filters: Filters
+    Filter: Filter
 }
 
 type ArticleCreate = {

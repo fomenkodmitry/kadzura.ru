@@ -3,8 +3,7 @@ import {TagPaged} from "../../models/Tag";
 
 const initialState: TagPaged = {
     data: [],
-    totalCount: 0,
-    totalPage: 1
+    totalCount: 0
 };
 
 const tagsSlice = createSlice({

@@ -43,19 +43,18 @@ const useStyles = makeStyles((theme) => ({
         padding: '0 1em'
     }
 }));
-type Props = { list: InterviewQuestionPaged, onPageChange: any, page: number };
+type Props = { list: InterviewQuestionPaged, onPageChange: any, page: number, count: number };
 
 export const InterviewQuestionList: React.FC<Props> = (props) => {
 
     const classes = useStyles();
-
     return (
         <Grid container style={{justifyContent: 'center'}}>
             <div style={{flexBasis: '100%'}}>
                 <InfiniteScroll
                     dataLength={props.list.data.length}
                     next={props.onPageChange}
-                    hasMore={props.page !== props.list.totalPage}
+                    hasMore={props.list.data.length == props.count}
                     loader={<h4>Loading...</h4>}
                     endMessage={
                         <p style={{textAlign: "center"}}>

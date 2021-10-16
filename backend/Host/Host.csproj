@@ -17,7 +17,7 @@
         <PackageReference Include="Kadzura.Auth.Extensions" Version="1.0.5" />
         <PackageReference Include="Kadzura.Extensions.Filtration" Version="2.0.0" />
         <PackageReference Include="Kadzura.Extensions.Filtration.Binder" Version="1.0.3" />
-        <PackageReference Include="Kadzura.Extensions.Filtration.EntityFramework" Version="2.0.0" />
+        <PackageReference Include="Kadzura.Extensions.Filtration.EntityFramework" Version="2.0.1" />
         <PackageReference Include="Kadzura.Extensions.Pagination" Version="2.0.0" />
         <PackageReference Include="Kadzura.Extensions.Pagination.EntityFramework" Version="2.0.0" />
         <PackageReference Include="Kadzura.FileManager" Version="1.0.1" />

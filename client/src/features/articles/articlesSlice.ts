@@ -3,8 +3,7 @@ import {ArticlePaged} from "../../models/Article";
 
 const initialState: ArticlePaged = {
     data: [],
-    totalCount: 0,
-    totalPage: 1
+    totalCount: 0
 };
 
 const articlesSlice = createSlice({
@@ -14,12 +13,10 @@ const articlesSlice = createSlice({
         setArticle(state, {payload}: PayloadAction<ArticlePaged>) {
             state.data = [...state.data, ...payload.data];
             state.totalCount = payload.totalCount;
-            state.totalPage = payload.totalPage
         },
         clearArticle(state) {
             state.data = []
             state.totalCount = 0
-            state.totalPage = 1
         }
     },
 });

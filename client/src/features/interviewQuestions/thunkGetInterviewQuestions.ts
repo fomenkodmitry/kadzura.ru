@@ -5,7 +5,7 @@ import {AppThunk} from "../../utils/redux";
 
 export function thunkGetInterviewQuestions(filter: InterviewQuestionListDto): AppThunk {
     return async (dispatch) => {
-        const filters = filter.Filters.length === 0 ? '[]' : JSON.stringify(filter.Filters)
+        const filters = JSON.stringify(filter.Filter)
         await RestService
             .GetInstance
             .GET<InterviewQuestionPaged>(

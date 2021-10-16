@@ -4,7 +4,6 @@ import {InterviewQuestionPaged} from "../../models/InterviewQuestion";
 const initialState: InterviewQuestionPaged = {
     data: [],
     totalCount: 0,
-    totalPage: 1
 };
 
 const interviewQuestionsSlice = createSlice({
@@ -14,12 +13,10 @@ const interviewQuestionsSlice = createSlice({
         setInterviewQuestions(state, {payload}: PayloadAction<InterviewQuestionPaged>) {
             state.data = [...state.data, ...payload.data];
             state.totalCount = payload.totalCount;
-            state.totalPage = payload.totalPage
         },
         clearInterviewQuestions(state) {
             state.data = []
             state.totalCount = 0
-            state.totalPage = 1
         },
     },
 });

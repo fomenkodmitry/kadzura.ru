@@ -1,7 +1,7 @@
 ﻿import {Tag, TagDto} from "./Tag";
 import {PagedData} from "./PagedData";
 import {Paging} from "./Paging";
-import {Filters} from "./Filters";
+import {Filter} from "./Filters";
 
 type InterviewQuestion = {
     id: string;
@@ -15,7 +15,7 @@ type InterviewQuestionPaged = PagedData<InterviewQuestion>;
 
 type InterviewQuestionListDto = {
     Paging: Paging
-    Filters: Filters
+    Filter: Filter
 }
 
 type InterviewQuestionCreate = {

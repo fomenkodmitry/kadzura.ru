@@ -7,6 +7,7 @@ import {clearArticle} from "../features/articles/articlesSlice";
 import {useDispatch} from "react-redux";
 import {setIsShowFilters} from "../features/layout/layoutSlice";
 
+const Count: number = 20
 export const Articles: FC = () => {
   
     const dispatch = useDispatch();
@@ -21,29 +22,22 @@ export const Articles: FC = () => {
     
     useEffect(() => {
             const filter: InterviewQuestionListDto = {
-                Filters: [],
+                Filter: [],
                 Paging: {
                     Page: page,
-                    Count: 20
+                    Count: Count
                 }
             }
             if (tagSelector?.data?.length != 0) {
-                filter.Filters = [...filter.Filters,
-                    {
-                        field: "tags.tagId",
-                        operation: "equal",
-                        values: [...tagSelector?.data]
-                    }
-                ]
+                filter.Filter = {...filter.Filter,
+                    "=tags.tagId":  [...tagSelector?.data]
+                }
             }
             if (search?.text?.length) {
-                filter.Filters = [...filter.Filters,
-                    {
-                        field: "fulltext",
-                        operation: "contains",
-                        values: [search.text]
-                    }
-                ]
+                filter.Filter = {
+                    ...filter.Filter,
+                    "=fulltext": [search.text]
+                }
             }
             dispatch(thunkGetArticle(filter))
             dispatch(setIsShowFilters({isShowFilters: true}))
@@ -57,6 +51,6 @@ export const Articles: FC = () => {
     }, [tagSelector, search])
     
     return (
-        <ArticleList list={articles} page={page} onPageChange={onPageChange}/>
+        <ArticleList list={articles} page={page} onPageChange={onPageChange} count={Count}/>
     );
 }
