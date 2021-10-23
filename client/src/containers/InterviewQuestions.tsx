@@ -29,14 +29,22 @@ export const InterviewQuestions: React.FC = () => {
                 }
             }
             if (tagSelector?.data?.length != 0) {
-                filter.Filter = {...filter.Filter,
-                    '=tags.tagId': [...tagSelector?.data]
-                }
+                filter.Filter = 
+                    {
+                        '=tags.tagId': [...tagSelector?.data]
+                    }
             }
             if (search.text?.length) {
-                filter.Filter = {...filter.Filter,
-                   '%fulltext%': [search.text]
-                }
+                filter.Filter = [
+                    {
+                        ...filter.Filter,
+                        '%answer%': [search.text]
+                    },
+                    {
+                        ...filter.Filter,
+                        '%question%': [search.text]
+                    }
+                ]
             }
             dispatch(thunkGetInterviewQuestions(filter))
         },

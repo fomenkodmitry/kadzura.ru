@@ -29,15 +29,22 @@ export const Articles: FC = () => {
                 }
             }
             if (tagSelector?.data?.length != 0) {
-                filter.Filter = {...filter.Filter,
-                    "=tags.tagId":  [...tagSelector?.data]
-                }
+                filter.Filter =
+                    {
+                        '=tags.tagId': [...tagSelector?.data]
+                    }
             }
-            if (search?.text?.length) {
-                filter.Filter = {
-                    ...filter.Filter,
-                    "=fulltext": [search.text]
-                }
+            if (search.text?.length) {
+                filter.Filter = [
+                    {
+                        ...filter.Filter,
+                        '%text%': [search.text]
+                    },
+                    {
+                        ...filter.Filter,
+                        '%title%': [search.text]
+                    }
+                ]
             }
             dispatch(thunkGetArticle(filter))
             dispatch(setIsShowFilters({isShowFilters: true}))
