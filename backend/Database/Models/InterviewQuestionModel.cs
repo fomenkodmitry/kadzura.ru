@@ -6,11 +6,11 @@ namespace Database.Models
 {
     public class InterviewQuestionModel : EntityBaseModel
     {
+        [Filters("question", FilterTypes.String)]
         public string Question { get; set; }
+        
+        [Filters("answer", FilterTypes.String)]
         public string Answer { get; set; }
-
-        [Filters("fulltext", FilterTypes.String)]
-        public string FullText { get; set; }
 
         [Filters("tags")]
         public ICollection<InterviewQuestionToTagsModel> Tags { get; set; }
