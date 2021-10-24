@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Core.Models.Filter;
 using Core.Services.Contracts;
 using Database.Models;
-using Kadzura.Extensions.Pagination.Models;
+using Kadzura.Database.Pagination.Models;
 using Kadzura.Web.Extensions;
 
 namespace Host.Controllers

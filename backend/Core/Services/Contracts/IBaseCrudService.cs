@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using Kadzura.Extensions.Pagination.Models;
-using Kadzura.Extensions.Pagination.Queries.Contracts;
+using Kadzura.Database.Pagination.Models;
+using Kadzura.Database.Pagination.Queries.Contracts;
 
 namespace Core.Services.Contracts
 {

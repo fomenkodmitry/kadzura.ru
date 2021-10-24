@@ -37,12 +37,15 @@ export const Articles: FC = () => {
             if (search.text?.length) {
                 filter.Filter = [
                     {
+                        '0': [
+                            {
+                                '%text%': [search.text],
+                            },
+                            {
+                                '%title%': [search.text]
+                            }
+                        ],
                         ...filter.Filter,
-                        '%text%': [search.text]
-                    },
-                    {
-                        ...filter.Filter,
-                        '%title%': [search.text]
                     }
                 ]
             }

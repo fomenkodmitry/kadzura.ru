@@ -1,5 +1,4 @@
 ﻿using Kadzura.Auth.Extensions;
-using Kadzura.Extensions.Filtration.Binder;
 using Kadzura.Swagger.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -7,7 +6,6 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Common;
-using Kadzura.Extensions.Filtration;
 using Kadzura.Web.Extensions.Extensions;
 using Microsoft.Extensions.Hosting;
 

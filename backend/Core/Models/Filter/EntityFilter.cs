@@ -1,4 +1,4 @@
-﻿using Kadzura.Extensions.Pagination.Queries;
+﻿using Kadzura.Database.Pagination.Queries;
 
 namespace Core.Models.Filter
 {

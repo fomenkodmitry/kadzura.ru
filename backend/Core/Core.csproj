@@ -13,10 +13,8 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="Kadzura.Auth.Extensions" Version="1.0.5" />
-    <PackageReference Include="Kadzura.Extensions.Filtration.EntityFramework" Version="2.0.1" />
-    <PackageReference Include="Kadzura.Extensions.Pagination" Version="2.0.0" />
-    <PackageReference Include="Kadzura.Extensions.Pagination.EntityFramework" Version="2.0.0" />
-    <PackageReference Include="Kadzura.FileManager" Version="1.0.1" />
+    <PackageReference Include="Kadzura.Database.Filtration" Version="1.0.1" />
+    <PackageReference Include="Kadzura.Database.Pagination" Version="1.0.0" />
     <PackageReference Include="MimeTypeMapOfficial" Version="1.0.17" />
   </ItemGroup>
 

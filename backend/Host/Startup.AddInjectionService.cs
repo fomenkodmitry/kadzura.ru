@@ -3,7 +3,6 @@ using Core.Services.Contracts;
 using Database;
 using Database.Repository;
 using Database.Repository.Contracts;
-using Kadzura.FileManager.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Kadzura.Web.Extensions.Extensions;
 using Microsoft.EntityFrameworkCore;
@@ -42,7 +41,6 @@ namespace Host
         private void AddOtherDependency(IServiceCollection services, AppSettings appSettings)
         {
             services.AddSingleton<IMemoryCache, MemoryCache>();
-            services.AddFileStore();
         }
 
         private void AddHttpClients(IServiceCollection services, AppSettings appSettings)

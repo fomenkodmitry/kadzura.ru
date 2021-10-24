@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using Kadzura.Extensions.Filtration.Attributes;
-using Kadzura.Extensions.Filtration.Enums;
+using Kadzura.Database.Filtration.Attributes;
+using Kadzura.Database.Filtration.Enums;
 
 namespace Database.Models
 {

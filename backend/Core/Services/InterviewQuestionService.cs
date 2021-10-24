@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Core.Services.Contracts;
 using Database.Models;
 using Database.Repository.Contracts;
-using Kadzura.Extensions.Pagination.Models;
-using Kadzura.Extensions.Pagination.Queries.Contracts;
+using Kadzura.Database.Pagination.Models;
+using Kadzura.Database.Pagination.Queries.Contracts;
 
 namespace Core.Services
 {

@@ -35,16 +35,17 @@ export const InterviewQuestions: React.FC = () => {
                     }
             }
             if (search.text?.length) {
-                filter.Filter = [
-                    {
-                        ...filter.Filter,
-                        '%answer%': [search.text]
-                    },
-                    {
-                        ...filter.Filter,
-                        '%question%': [search.text]
-                    }
-                ]
+                filter.Filter = {
+                    '0': [
+                        {
+                            '%question%': [search.text],
+                        },
+                        {
+                            '%answer%': [search.text]
+                        }
+                    ],
+                    ...filter.Filter,
+                }
             }
             dispatch(thunkGetInterviewQuestions(filter))
         },
