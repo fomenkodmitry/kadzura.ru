@@ -8,11 +8,7 @@ export function thunkGetByIdArticle(articleId: string): AppThunk {
         await RestService
             .GetInstance
             .GET<ArticlePaged>(
-                `/api/v1/article?Paging.Page=1&Paging.Count=1&Filters=[{
-                        field: "id",
-                        operation: "equal",
-                        values: [${articleId}]
-                    }]`
+                `/api/v1/article?Paging.Page=1&Paging.Count=1&Filters={'=id':[${articleId}]}`
             )
             .then(p => dispatch(setArticle(p?.data?.[0])))
             .catch(p => alert(p));

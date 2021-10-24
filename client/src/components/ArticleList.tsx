@@ -7,7 +7,6 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import {useHistory} from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
-import {Button} from "@material-ui/core";
 import {ArticlePaged} from "../models/Article";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -35,12 +34,12 @@ type Props = { list: ArticlePaged, onPageChange: any, page: number, count: numbe
 
 export const ArticleList: React.FC<Props> = (props) => {
     const classes = useStyles();
-    
+
     const history = useHistory();
     const toLink = (link: string) => {
         history.push(link);
     };
-    
+
     return (
         <List style={{justifyContent: 'center'}}>
             <InfiniteScroll
@@ -57,38 +56,33 @@ export const ArticleList: React.FC<Props> = (props) => {
             >
                 {
                     props.list?.data?.map(({id, title, text, tags}) => {
-                        return (
-                            <>
-                                <ListItem className={classes.listItem} alignItems="center" key={id}>
-                                    <ListItemText
-                                        primary={title}
-                                        primaryTypographyProps={{variant: "h4"}}
-                                        secondary={
-                                            <React.Fragment>
-                                                <Typography
-                                                    component="span"
-                                                    variant="body2"
-                                                    color="textPrimary"
-                                                >
-                                                </Typography>
-                                                <span className={classes.tags}> | Tags: {
-                                                    tags.map(p => p.tag.name).join(", ")
-                                                }</span>
-                                                <br/>
-                                                <br/>
-                                                {text.replace(/(<([^>]+)>)/gi, "").substring(0, 400)}
-                                                <br/>
-                                                <Button onClick={() => toLink("/article/" + id)}>
-                                                    Читать
-                                                </Button>
-                                            </React.Fragment>
-                                        }
-                                    />
-                                </ListItem>
-                                <Divider className={classes.divider} light/>
-                            </>
-                        )
-                    })
+                            return (
+                                <>
+                                    <ListItem className={classes.listItem} alignItems="center" key={id}>
+                                        <ListItemText
+                                            onClick={() => toLink("/article/" + id)}
+                                            primary={title}
+                                            primaryTypographyProps={{variant: "h4"}}
+                                            secondary={
+                                                <React.Fragment>
+                                                    <Typography
+                                                        component="span"
+                                                        variant="body2"
+                                                        color="textPrimary"
+                                                    >
+                                                    </Typography>
+                                                    <span className={classes.tags}> | Tags: {
+                                                        tags.map(p => p.tag.name).join(", ")
+                                                    }</span>
+                                                </React.Fragment>
+                                            }
+                                        />
+                                    </ListItem>
+                                    <Divider className={classes.divider} light/>
+                                </>
+                            )
+                        }
+                    )
                 }
             </InfiniteScroll>
         </List>
