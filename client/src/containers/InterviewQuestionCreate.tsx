@@ -2,6 +2,9 @@
 import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
 import {Paper} from "@material-ui/core";
 import {InterviewQuestionCreateForm} from "../components/InterviewQuestionCreateForm";
+import {useAuth} from "../hooks/useAuth";
+import {useDispatch} from "react-redux";
+import {useNamedSelector} from "../hooks/useNamedSelector";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -15,12 +18,16 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export const InterviewQuestionCreate = () => {
+    useAuth();
     const classes = useStyles();
 
+    const dispatch = useDispatch();
+    const tags = useNamedSelector('tags')
+    
     return (
         <div className={classes.createForm}>
             <Paper>
-                <InterviewQuestionCreateForm/>
+                <InterviewQuestionCreateForm dispatch={dispatch} tags={tags}/>
             </Paper>
         </div>
     );

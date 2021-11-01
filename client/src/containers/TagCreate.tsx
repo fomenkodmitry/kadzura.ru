@@ -2,6 +2,8 @@
 import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
 import {Paper} from "@material-ui/core";
 import {TagCreateForm} from "../components/TagCreateForm";
+import {useAuth} from "../hooks/useAuth";
+import {useDispatch} from "react-redux";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -15,12 +17,16 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export const TagCreate = () => {
+    useAuth();
+
     const classes = useStyles();
+
+    const dispatch = useDispatch();
 
     return (
         <div className={classes.createForm}>
             <Paper>
-                <TagCreateForm/>
+                <TagCreateForm dispatch={dispatch}/>
             </Paper>
         </div>
     );

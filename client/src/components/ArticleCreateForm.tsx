@@ -5,11 +5,10 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
 import {InputLabel, Paper, Select, Typography} from "@material-ui/core";
-import {useDispatch} from "react-redux";
-import {useNamedSelector} from "../hooks/useNamedSelector";
-import {thunkGetTags} from "../features/tags/thunkGetTags";
-import {TagDto} from "../models/Tag";
+import {TagDto, TagPaged, TagValue} from "../models/Tag";
 import {thunkCreateArticle} from "../features/articles/thunkCreateArticle";
+import {ArticlePaged} from "../models/Article";
+import {Dispatch} from "redux";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -33,16 +32,10 @@ const validationSchema = yup.object({
         .required('Tags is required')
 });
 
-export const ArticleCreateForm = () => {
+type Props = { tags: TagPaged, dispatch: Dispatch<any>};
 
-    const dispatch = useDispatch();
-    const tags = useNamedSelector('tags')
-    const isLogin = useNamedSelector('login');
-
-    useEffect(() => {
-        dispatch(thunkGetTags())
-    }, [dispatch])
-
+export const ArticleCreateForm: React.FC<Props> = ({dispatch, tags}) => {
+    
     const [value, setValue] = useState("");
 
     const classes = useStyles();
@@ -68,8 +61,6 @@ export const ArticleCreateForm = () => {
     });
 
     return (
-        isLogin.isLogin
-            ?
             <form onSubmit={formik.handleSubmit}>
                 <TextField
                     fullWidth
@@ -126,7 +117,5 @@ export const ArticleCreateForm = () => {
                     Создать
                 </Button>
             </form>
-            :
-            <>Access denied</>
     );
 };

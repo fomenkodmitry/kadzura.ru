@@ -7,7 +7,7 @@ import {clearArticle} from "../features/articles/articlesSlice";
 import {useDispatch} from "react-redux";
 import {setIsShowFilters} from "../features/layout/layoutSlice";
 
-const Count: number = 20
+const Count: number = 30
 export const Articles: FC = () => {
   
     const dispatch = useDispatch();

@@ -13,6 +13,9 @@ const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         listItem: {
             width: '70%',
+            '&:hover': {
+                backgroundColor: '#ffffFf'
+            }
         },
         divider: {
             width: '70%',
@@ -32,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 type Props = { list: ArticlePaged, onPageChange: any, page: number, count: number };
 
-export const ArticleList: React.FC<Props> = (props) => {
+export const ArticleList: React.FC<Props> = ({list, onPageChange, page, count}) => {
     const classes = useStyles();
 
     const history = useHistory();
@@ -43,9 +46,9 @@ export const ArticleList: React.FC<Props> = (props) => {
     return (
         <List style={{justifyContent: 'center'}}>
             <InfiniteScroll
-                dataLength={props.list.data.length}
-                next={props.onPageChange}
-                hasMore={props.list.data.length == props.count}
+                dataLength={list.data.length}
+                next={onPageChange}
+                hasMore={list.data.length == count}
                 loader={<h4>Loading...</h4>}
                 endMessage={
                     <p style={{textAlign: "center"}}>
@@ -55,7 +58,7 @@ export const ArticleList: React.FC<Props> = (props) => {
                 className={classes.infinityScroll}
             >
                 {
-                    props.list?.data?.map(({id, title, text, tags}) => {
+                    list?.data?.map(({id, title, text, tags}) => {
                             return (
                                 <>
                                     <ListItem className={classes.listItem} alignItems="center" key={id}>

@@ -45,16 +45,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 type Props = { list: InterviewQuestionPaged, onPageChange: any, page: number, count: number };
 
-export const InterviewQuestionList: React.FC<Props> = (props) => {
+export const InterviewQuestionList: React.FC<Props> = ({list, onPageChange, page, count}) => {
 
     const classes = useStyles();
     return (
         <Grid container style={{justifyContent: 'center'}}>
             <div style={{flexBasis: '100%'}}>
                 <InfiniteScroll
-                    dataLength={props.list.data.length}
-                    next={props.onPageChange}
-                    hasMore={props.list.data.length == props.count}
+                    dataLength={list.data.length}
+                    next={onPageChange}
+                    hasMore={list.data.length == count}
                     loader={<h4>Loading...</h4>}
                     endMessage={
                         <p style={{textAlign: "center"}}>
@@ -64,7 +64,7 @@ export const InterviewQuestionList: React.FC<Props> = (props) => {
                     className={classes.infinityScroll}
                 >
                     {
-                        props.list?.data?.map(({id, question, answer, tags}) => {
+                        list?.data?.map(({id, question, answer, tags}) => {
                             return (
                                 <Grid item xs={12} key={id}>
                                     <div className={classes.containerItem}>

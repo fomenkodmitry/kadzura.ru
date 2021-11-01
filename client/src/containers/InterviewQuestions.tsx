@@ -7,7 +7,7 @@ import {InterviewQuestionListDto} from "../models/InterviewQuestion";
 import {thunkGetInterviewQuestions} from "../features/interviewQuestions/thunkGetInterviewQuestions";
 import {setIsShowFilters} from "../features/layout/layoutSlice";
 
-const Count: number = 20
+const Count: number = 30
 export const InterviewQuestions: React.FC = () => {
 
     const dispatch = useDispatch();
