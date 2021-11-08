@@ -5,8 +5,6 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
 import {InputLabel, Paper, Select, Typography} from "@material-ui/core";
-import {useDispatch} from "react-redux";
-import {useNamedSelector} from "../hooks/useNamedSelector";
 import {thunkGetTags} from "../features/tags/thunkGetTags";
 import {thunkCreateInterviewQuestion} from "../features/interviewQuestions/thunkCreateInterviewQuestion";
 import {TagDto, TagPaged} from "../models/Tag";

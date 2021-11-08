@@ -4,6 +4,7 @@ import {Paper} from "@material-ui/core";
 import {TagCreateForm} from "../components/TagCreateForm";
 import {useAuth} from "../hooks/useAuth";
 import {useDispatch} from "react-redux";
+import {useHistory} from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -17,7 +18,10 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export const TagCreate = () => {
-    useAuth();
+    const isAuth = useAuth();
+    const history = useHistory();
+    if(!isAuth)
+        history.push('/admin/login')
 
     const classes = useStyles();
 

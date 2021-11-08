@@ -5,6 +5,7 @@ import {InterviewQuestionCreateForm} from "../components/InterviewQuestionCreate
 import {useAuth} from "../hooks/useAuth";
 import {useDispatch} from "react-redux";
 import {useNamedSelector} from "../hooks/useNamedSelector";
+import {useHistory} from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -18,7 +19,11 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export const InterviewQuestionCreate = () => {
-    useAuth();
+    const isAuth = useAuth();
+    const history = useHistory();
+    if(!isAuth)
+        history.push('/admin/login')
+    
     const classes = useStyles();
 
     const dispatch = useDispatch();

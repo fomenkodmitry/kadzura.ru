@@ -6,6 +6,7 @@ import {useDispatch} from "react-redux";
 import {useNamedSelector} from "../hooks/useNamedSelector";
 import {thunkGetTags} from "../features/tags/thunkGetTags";
 import {useAuth} from "../hooks/useAuth";
+import {useHistory} from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -19,8 +20,11 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export const ArticleCreate = () => {
-    useAuth();
-    
+    const isAuth = useAuth();
+    const history = useHistory();
+    if(!isAuth)
+        history.push('/admin/login')
+
     const classes = useStyles();
     const dispatch = useDispatch();
     

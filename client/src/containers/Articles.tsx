@@ -6,10 +6,11 @@ import {thunkGetArticle} from "../features/articles/thunkGetArticle";
 import {clearArticle} from "../features/articles/articlesSlice";
 import {useDispatch} from "react-redux";
 import {setIsShowFilters} from "../features/layout/layoutSlice";
+import {Fabs} from "../components/Fabs";
 
 const Count: number = 30
 export const Articles: FC = () => {
-  
+
     const dispatch = useDispatch();
     const articles = useNamedSelector('articles')
     const tagSelector = useNamedSelector('tagsSelector')
@@ -61,6 +62,9 @@ export const Articles: FC = () => {
     }, [tagSelector, search])
     
     return (
-        <ArticleList list={articles} page={page} onPageChange={onPageChange} count={Count}/>
+        <>
+            <ArticleList list={articles} page={page} onPageChange={onPageChange} count={Count}/>
+            <Fabs createUrl={"/admin/article/create"}/>
+        </>
     );
 }

@@ -45,7 +45,6 @@ namespace Host
 
         private void AddHttpClients(IServiceCollection services, AppSettings appSettings)
         {
-            services.AddCorrelationIdRequestHandler();
             services.AddErrorMessageResponseHandler();
         }
 

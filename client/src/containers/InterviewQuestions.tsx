@@ -6,6 +6,8 @@ import {useNamedSelector} from "../hooks/useNamedSelector";
 import {InterviewQuestionListDto} from "../models/InterviewQuestion";
 import {thunkGetInterviewQuestions} from "../features/interviewQuestions/thunkGetInterviewQuestions";
 import {setIsShowFilters} from "../features/layout/layoutSlice";
+import {Fabs} from "../components/Fabs";
+
 
 const Count: number = 30
 export const InterviewQuestions: React.FC = () => {
@@ -19,7 +21,7 @@ export const InterviewQuestions: React.FC = () => {
     const onPageChange = () => {
         setPage(page + 1)
     }
-    
+
     useEffect(() => {
             const filter: InterviewQuestionListDto = {
                 Filter: [],
@@ -29,7 +31,7 @@ export const InterviewQuestions: React.FC = () => {
                 }
             }
             if (tagSelector?.data?.length != 0) {
-                filter.Filter = 
+                filter.Filter =
                     {
                         '=tags.tagId': [...tagSelector?.data]
                     }
@@ -59,6 +61,9 @@ export const InterviewQuestions: React.FC = () => {
     }, [tagSelector, search])
 
     return (
-        <InterviewQuestionList list={interviewQuestions} onPageChange={onPageChange} page={page} count={Count}/>
+        <>
+            <InterviewQuestionList list={interviewQuestions} onPageChange={onPageChange} page={page} count={Count}/>
+            <Fabs createUrl={"/admin/interview-question/create"}/>
+        </>
     );
 }

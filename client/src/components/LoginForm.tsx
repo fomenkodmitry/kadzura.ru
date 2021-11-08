@@ -6,6 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import {useDispatch} from "react-redux";
 import {thunkLogin} from "../features/login/thunkLogin";
 import {useNamedSelector} from "../hooks/useNamedSelector";
+import {useHistory} from "react-router-dom";
 
 
 const validationSchema = yup.object({
@@ -22,10 +23,14 @@ export const LoginForm = () => {
 
     const dispatch = useDispatch();
     const isLogin = useNamedSelector('login');
+    const history = useHistory();
 
     useEffect(() => {
-        if (isLogin.isLogin)
-            alert("Success")
+        if (!isLogin.isLogin)
+            return;
+        
+        alert("Success")
+        history.push("/")
     }, [isLogin])
     
     const formik = useFormik({
