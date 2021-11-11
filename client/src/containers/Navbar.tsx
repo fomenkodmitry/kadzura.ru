@@ -11,6 +11,8 @@ import {contacts} from "../dataset/contacts";
 import {navigationLayout} from "../dataset/navigationLayout";
 import {Button, Divider} from "@material-ui/core";
 import {useHistory} from "react-router-dom";
+import {useAuth} from "../hooks/useAuth";
+import {setIsAuth} from "../features/login/loginSlice";
 
 const drawerWidth = 240;
 
@@ -68,7 +70,9 @@ export const Navbar: FC = () => {
     const classes = useStyles();
 
     const theme = useTheme();
-
+    
+    const isAuth = useAuth();
+    
     const dispatch = useDispatch();
 
     const changeNavbarMobileOpen = () => {
@@ -76,7 +80,12 @@ export const Navbar: FC = () => {
     };
     const {isOpen} = useNamedSelector('navbarMobileIsOpen')
     const params = new URLSearchParams(window.location.search)
-
+    
+    const logout = () => {
+        dispatch(setIsAuth(false))
+        localStorage.clear()
+    }
+    
     const history = useHistory();
     const toLink = (link: string) => {
         history.push({
@@ -107,6 +116,15 @@ export const Navbar: FC = () => {
                         </div>
                     )
                 })}
+                {
+                    isAuth &&
+                    <div>
+                        <Button className={classes.buttonLink} onClick={logout}>
+                            Выйти
+                        </Button>
+                        <Divider/>
+                    </div>
+                }
             </div>
 
             <div className={classes.contacts}>

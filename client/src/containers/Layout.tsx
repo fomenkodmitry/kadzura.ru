@@ -13,6 +13,7 @@ import {Navbar} from "./Navbar";
 import {useNamedSelector} from "../hooks/useNamedSelector";
 import {Button} from "@material-ui/core";
 import {useHistory} from "react-router-dom";
+import {ButtonGoBack} from "../components/ButtonGoBack";
 
 const drawerWidth = 240;
 
@@ -66,7 +67,6 @@ const Layout: FC = ({children}) => {
     const changeMobileOpen = () => {
         dispatch(changeNavbarMobileIsOpen())
     };
-    const history = useHistory();
 
     return (
         <div className={classes.root}>
@@ -90,7 +90,7 @@ const Layout: FC = ({children}) => {
                                     <TagMenu/>
                                 </>
                                 :
-                                <Button className={classes.backButton} onClick={() => history.goBack()}>НАЗАД</Button>
+                                <ButtonGoBack className={classes.backButton}/>
                         }
                     </div>
                 </Toolbar>

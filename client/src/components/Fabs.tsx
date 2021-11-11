@@ -6,6 +6,8 @@ import {Fab} from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import {CloudDownloadSharp} from "@material-ui/icons";
 import {InterviewQuestionPaged} from "../models/InterviewQuestion";
+import {thunkGetDump} from "../features/dump/thunkGetDump";
+import {useDispatch} from "react-redux";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -26,7 +28,10 @@ type Props = { createUrl: string };
 export const Fabs : React.FC<Props> = ({createUrl})  => {
     const isAuth = useAuth();
     const history = useHistory();
-
+    const dispatch = useDispatch();
+    
+    const download = () => dispatch(thunkGetDump());
+    
     const classes = useStyles();
 
     return (
@@ -35,7 +40,7 @@ export const Fabs : React.FC<Props> = ({createUrl})  => {
                 isAuth &&
                 <>
                     <Fab color="inherit" aria-label="add" className={classes.fabDownload}
-                         onClick={() => alert()}>
+                         onClick={download}>
                         <CloudDownloadSharp/>
                     </Fab>
                     <Fab color="secondary" aria-label="add" className={classes.fabCreate}

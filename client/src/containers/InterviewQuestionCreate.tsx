@@ -6,6 +6,7 @@ import {useAuth} from "../hooks/useAuth";
 import {useDispatch} from "react-redux";
 import {useNamedSelector} from "../hooks/useNamedSelector";
 import {useHistory} from "react-router-dom";
+import {ButtonGoBack} from "../components/ButtonGoBack";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({

@@ -8,6 +8,16 @@ import {useNamedSelector} from "../hooks/useNamedSelector";
 import {thunkCreateTag} from "../features/tags/thunkCreateTag";
 import {TagPaged} from "../models/Tag";
 import {Dispatch} from "redux";
+import {ButtonGoBack} from "./ButtonGoBack";
+import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        backButton: {
+            color: '#000000'
+        }
+    }),
+);
 
 const validationSchema = yup.object({
     name: yup
@@ -18,6 +28,7 @@ const validationSchema = yup.object({
 type Props = { dispatch: Dispatch<any>};
 
 export const TagCreateForm: React.FC<Props> = ({dispatch}) => {
+    const classes = useStyles()
     
     const formik = useFormik({
         initialValues: {
@@ -49,6 +60,8 @@ export const TagCreateForm: React.FC<Props> = ({dispatch}) => {
             <Button color="primary" variant="contained" fullWidth type="submit">
                 Создать
             </Button>
+            <br/>
+            <ButtonGoBack fullWidth className={classes.backButton}/>
         </form>
     );
 };

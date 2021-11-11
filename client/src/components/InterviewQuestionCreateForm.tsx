@@ -9,12 +9,17 @@ import {thunkGetTags} from "../features/tags/thunkGetTags";
 import {thunkCreateInterviewQuestion} from "../features/interviewQuestions/thunkCreateInterviewQuestion";
 import {TagDto, TagPaged} from "../models/Tag";
 import {Dispatch} from "redux";
+import {ButtonAddTag} from "./ButtonAddTag";
+import {ButtonGoBack} from "./ButtonGoBack";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         prerender: {
             width: '100vh',
             wordWrap: 'break-word'
+        },
+        backButton: {
+            color: '#000000'
         }
     }),
 );
@@ -32,10 +37,10 @@ const validationSchema = yup.object({
         .required('Tags is required')
 });
 
-type Props = { tags: TagPaged, dispatch: Dispatch<any>};
+type Props = { tags: TagPaged, dispatch: Dispatch<any> };
 
 export const InterviewQuestionCreateForm: React.FC<Props> = ({dispatch, tags}) => {
-    
+
     useEffect(() => {
         dispatch(thunkGetTags())
     }, [dispatch])
@@ -92,7 +97,7 @@ export const InterviewQuestionCreateForm: React.FC<Props> = ({dispatch, tags}) =
                 helperText={formik.touched.answer && formik.errors.answer}
             />
             <InputLabel shrink htmlFor="select-multiple-native">
-                Теги
+                Теги <ButtonAddTag/>
             </InputLabel>
             <Select
                 id="tags"
@@ -119,6 +124,8 @@ export const InterviewQuestionCreateForm: React.FC<Props> = ({dispatch, tags}) =
             <Button color="primary" variant="contained" fullWidth type="submit">
                 Создать
             </Button>
+            <br/>
+            <ButtonGoBack fullWidth className={classes.backButton}/>
         </form>
     );
 };
