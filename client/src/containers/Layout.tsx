@@ -11,8 +11,6 @@ import {TagMenu} from "./TagMenu";
 import {SearchBar} from "./SearchBar";
 import {Navbar} from "./Navbar";
 import {useNamedSelector} from "../hooks/useNamedSelector";
-import {Button} from "@material-ui/core";
-import {useHistory} from "react-router-dom";
 import {ButtonGoBack} from "../components/ButtonGoBack";
 
 const drawerWidth = 240;
