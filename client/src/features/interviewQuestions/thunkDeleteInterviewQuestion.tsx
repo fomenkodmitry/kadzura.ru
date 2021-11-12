@@ -1,7 +1,7 @@
 ﻿import {RestService} from "../../utils/rest";
 import {AppThunk} from "../../utils/redux";
 
-export function thunkDeleteInterviewQuestion(id: number): AppThunk {
+export function thunkDeleteInterviewQuestion(id: string): AppThunk {
     return async () => {
         await RestService
             .GetInstance

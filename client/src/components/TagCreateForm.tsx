@@ -1,12 +1,9 @@
-﻿import React, {useEffect} from "react";
+﻿import React from "react";
 import {useFormik} from 'formik';
 import * as yup from 'yup';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import {useDispatch} from "react-redux";
-import {useNamedSelector} from "../hooks/useNamedSelector";
 import {thunkCreateTag} from "../features/tags/thunkCreateTag";
-import {TagPaged} from "../models/Tag";
 import {Dispatch} from "redux";
 import {ButtonGoBack} from "./ButtonGoBack";
 import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";

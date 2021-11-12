@@ -8,6 +8,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import React from "react";
 import {InterviewQuestionPaged} from "../models/InterviewQuestion";
 import InfiniteScroll from "react-infinite-scroll-component";
+import {ButtonRemove} from "./ButtonRemove";
 
 const useStyles = makeStyles((theme) => ({
     heading: {
@@ -43,9 +44,9 @@ const useStyles = makeStyles((theme) => ({
         padding: '0 1em'
     }
 }));
-type Props = { list: InterviewQuestionPaged, onPageChange: any, page: number, count: number };
+type Props = { list: InterviewQuestionPaged, onPageChange: any, count: number, removeAction: (id: string) => void, isAuth: boolean };
 
-export const InterviewQuestionList: React.FC<Props> = ({list, onPageChange, page, count}) => {
+export const InterviewQuestionList: React.FC<Props> = ({list, onPageChange, count, isAuth, removeAction}) => {
 
     const classes = useStyles();
     return (
@@ -76,6 +77,9 @@ export const InterviewQuestionList: React.FC<Props> = ({list, onPageChange, page
                                                         tags.map(p => p.tag.name).join(", ")
                                                     }</span>
                                                 </Typography>
+                                                {
+                                                    isAuth && <ButtonRemove action={() => removeAction(id)}/>
+                                                }
                                             </AccordionSummary>
                                             <AccordionDetails className={classes.details}
                                                               dangerouslySetInnerHTML={{__html: answer}}>
