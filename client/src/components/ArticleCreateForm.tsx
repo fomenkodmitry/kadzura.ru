@@ -9,6 +9,7 @@ import {TagDto, TagPaged, TagValue} from "../models/Tag";
 import {thunkCreateArticle} from "../features/articles/thunkCreateArticle";
 import {Dispatch} from "redux";
 import {ButtonGoBack} from "./ButtonGoBack";
+import {ButtonAddTag} from "./ButtonAddTag";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -92,7 +93,7 @@ export const ArticleCreateForm: React.FC<Props> = ({dispatch, tags}) => {
                 helperText={formik.touched.text && formik.errors.text}
             />
             <InputLabel shrink htmlFor="select-multiple-native">
-                Теги
+                Теги <ButtonAddTag/>
             </InputLabel>
             <Select
                 id="tags"
