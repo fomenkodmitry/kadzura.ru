@@ -8,5 +8,6 @@ namespace Database.Repository.Contracts
     {
         Task<PagedData<TModel>> GetList(IPagedQuery pagedQuery, string filteredQuery);
         Task Create(TModel model);
+        Task Delete(int id);
     }
 }

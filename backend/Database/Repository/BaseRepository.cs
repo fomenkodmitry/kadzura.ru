@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Database.Models;
 using Database.Repository.Contracts;
@@ -6,6 +7,7 @@ using Kadzura.Database.Filtration.EntityFramework;
 using Kadzura.Database.Pagination.EntityFramework;
 using Kadzura.Database.Pagination.Models;
 using Kadzura.Database.Pagination.Queries.Contracts;
+using Microsoft.EntityFrameworkCore;
 
 namespace Database.Repository
 {
@@ -35,5 +37,15 @@ namespace Database.Repository
             _context.Set<TModel>().Add(model);
             await _context.SaveChangesAsync();
         }
+        
+        public async Task Delete(int id)
+        {
+            var entity = await GetById(id);
+            _context.Set<TModel>().Remove(entity);
+            await _context.SaveChangesAsync();
+        }
+
+        private async Task<TModel> GetById(int id)
+            => await _context.Set<TModel>().FirstOrDefaultAsync(p => p.Id == id);
     }
 }

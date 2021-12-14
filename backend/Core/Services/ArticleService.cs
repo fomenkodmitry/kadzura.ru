@@ -26,5 +26,10 @@ namespace Core.Services
             await _articleRepository.Create(model);
             return model;
         }
+
+        public async Task Delete(int id)
+        {
+            await _articleRepository.Delete(id);
+        }
     }
 }

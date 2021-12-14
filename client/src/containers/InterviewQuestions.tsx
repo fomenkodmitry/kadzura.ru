@@ -7,6 +7,10 @@ import {InterviewQuestionListDto} from "../models/InterviewQuestion";
 import {thunkGetInterviewQuestions} from "../features/interviewQuestions/thunkGetInterviewQuestions";
 import {setIsShowFilters} from "../features/layout/layoutSlice";
 import {Fabs} from "../components/Fabs";
+import {useForceUpdate} from "../hooks/useForceUpdate";
+import {thunkDeleteArticle} from "../features/articles/thunkDeleteArticle";
+import {thunkDeleteInterviewQuestion} from "../features/interviewQuestions/thunkDeleteInterviewQuestion";
+import {useAuth} from "../hooks/useAuth";
 
 
 const Count: number = 30
@@ -16,7 +20,12 @@ export const InterviewQuestions: React.FC = () => {
     const interviewQuestions = useNamedSelector('interviewQuestions')
     const tagSelector = useNamedSelector('tagsSelector')
     const search = useNamedSelector('search')
-
+    const [trigger, updateTrigger] = useForceUpdate();
+    const remove = async (id: string) => {
+        await dispatch(thunkDeleteInterviewQuestion(id))
+        updateTrigger()
+    }
+    const isAuth = useAuth()
     const [page, setPage] = useState(1)
     const onPageChange = () => {
         setPage(page + 1)
@@ -51,18 +60,18 @@ export const InterviewQuestions: React.FC = () => {
             }
             dispatch(thunkGetInterviewQuestions(filter))
         },
-        [dispatch, tagSelector, page, search]
+        [dispatch, tagSelector, page, search, trigger]
     )
 
     useEffect(() => {
         dispatch(clearInterviewQuestions())
         dispatch(setIsShowFilters({isShowFilters: true}))
         setPage(1)
-    }, [tagSelector, search])
+    }, [tagSelector, search, trigger])
 
     return (
         <>
-            <InterviewQuestionList list={interviewQuestions} onPageChange={onPageChange} page={page} count={Count}/>
+            <InterviewQuestionList list={interviewQuestions} onPageChange={onPageChange} count={Count} removeAction={remove} isAuth={isAuth}/>
             <Fabs createUrl={"/admin/interview-question/create"}/>
         </>
     );

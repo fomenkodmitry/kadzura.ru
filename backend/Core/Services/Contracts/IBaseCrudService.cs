@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Kadzura.Database.Pagination.Models;
 using Kadzura.Database.Pagination.Queries.Contracts;
 
@@ -8,5 +9,6 @@ namespace Core.Services.Contracts
     {
         Task<PagedData<TDto>> GetList(IPagedQuery pagedQuery, string filteredQuery);
         Task<TDto> Create(TModel model);
+        Task Delete(int id);
     }
 }

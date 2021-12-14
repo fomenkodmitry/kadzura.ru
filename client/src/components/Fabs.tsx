@@ -5,7 +5,6 @@ import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
 import {Fab} from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import {CloudDownloadSharp} from "@material-ui/icons";
-import {InterviewQuestionPaged} from "../models/InterviewQuestion";
 import {thunkGetDump} from "../features/dump/thunkGetDump";
 import {useDispatch} from "react-redux";
 

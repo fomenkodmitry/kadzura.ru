@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Core.Services.Contracts;
 using Database.Models;
 using Database.Repository.Contracts;
@@ -25,6 +26,11 @@ namespace Core.Services
         {
             await _interviewQuestionRepository.Create(model);
             return model;
+        }
+
+        public async Task Delete(int id)
+        {
+            await _interviewQuestionRepository.Delete(id);
         }
     }
 }

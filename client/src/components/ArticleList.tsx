@@ -8,6 +8,7 @@ import Divider from "@material-ui/core/Divider";
 import {useHistory} from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 import {ArticlePaged} from "../models/Article";
+import {ButtonRemove} from "./ButtonRemove";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -33,15 +34,10 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-type Props = { list: ArticlePaged, onPageChange: any, page: number, count: number };
+type Props = { list: ArticlePaged, onPageChange: any, count: number, toLink: (link: string) => void, isAuth: boolean, removeAction: (id: string) => void };
 
-export const ArticleList: React.FC<Props> = ({list, onPageChange, page, count}) => {
+export const ArticleList: React.FC<Props> = ({list, onPageChange, count, toLink, isAuth, removeAction}) => {
     const classes = useStyles();
-
-    const history = useHistory();
-    const toLink = (link: string) => {
-        history.push(link);
-    };
 
     return (
         <List style={{justifyContent: 'center'}}>
@@ -58,7 +54,7 @@ export const ArticleList: React.FC<Props> = ({list, onPageChange, page, count}) 
                 className={classes.infinityScroll}
             >
                 {
-                    list?.data?.map(({id, title, text, tags}) => {
+                    list?.data?.map(({id, title, tags}) => {
                             return (
                                 <>
                                     <ListItem className={classes.listItem} alignItems="center" key={id}>
@@ -80,6 +76,9 @@ export const ArticleList: React.FC<Props> = ({list, onPageChange, page, count}) 
                                                 </React.Fragment>
                                             }
                                         />
+                                        {
+                                            isAuth && <ButtonRemove action={() => removeAction(id)}/>
+                                        }
                                     </ListItem>
                                     <Divider className={classes.divider} light/>
                                 </>

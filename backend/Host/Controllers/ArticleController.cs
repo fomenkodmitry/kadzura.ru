@@ -41,5 +41,14 @@ namespace Host.Controllers
         {
             return Ok(await _articleService.GetList(requestDto.Paging, requestDto.Filters));
         }
+        
+        [HttpDelete("{id}")]
+        [ProducesResponseType( StatusCodes.Status204NoContent)]
+        [ApiVersionRange(1)]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _articleService.Delete(id);
+            return NoContent();
+        }
     }
 }
