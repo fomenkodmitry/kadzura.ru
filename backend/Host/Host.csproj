@@ -3,7 +3,7 @@
     <PropertyGroup>
         <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
         <LangVersion>latestmajor</LangVersion>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
